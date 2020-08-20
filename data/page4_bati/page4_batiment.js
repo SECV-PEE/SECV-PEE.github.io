@@ -120,7 +120,8 @@ d3.csv("data/page4_bati/CEE_simplifiee.csv").then((data)=>{
 ];
   var x = cee_chart.addCategoryAxis("x", "DATE");
   x.addOrderRule("DATE");
-  cee_chart.addMeasureAxis("y", "MONTANT");
+  var y = cee_chart.addMeasureAxis("y", "MONTANT");
+  y.title = "Energie économisée cumulée (KWhc)"
   var s = cee_chart.addSeries("TYPE", dimple.plot.area);
   cee_chart.addLegend(60, 10, 500, 20, "right");
   cee_chart.draw();

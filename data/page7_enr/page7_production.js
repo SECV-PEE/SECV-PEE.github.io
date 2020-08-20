@@ -1,6 +1,14 @@
+///////////////////////////////////////////
+//Parametre a modifier
+// Choisir l'annee pour afficher par defaut
+
+var annee_p = "2017";
+
+///////////////////////////////////////////
+
 
 let body_prod = d3.select("#body_prod");
-
+var selectedEPCI = undefined;
 
 Promise.all([
     d3.csv("data/page7_enr/rose_production_epci.csv"),
@@ -17,10 +25,11 @@ Promise.all([
     drawProdMap(data_prod, mapInfo, "prod_tot");
 })
 
-var annee_c = "2017";
-var selectedEPCI = undefined;
+
 
 function get_prod_history(data){
+    console.log(data);
+    data = data.filter(function(d){return d.secteur !== "coge";});
     let years = data.map(function(d){return d.annee;});
     years = [...new Set(years)]
     let history = []
@@ -38,17 +47,21 @@ function drawProdLine(data){
     console.log(data);
     var svg = d3.select("#linechart_prod")
     var myChart = new dimple.chart(svg, data);
-    myChart.setBounds(60, 20, 350, 140);
+    myChart.setBounds(60, 10, 350, 140);
     var x = myChart.addCategoryAxis("x", "year");
     x.addOrderRule("year");
-    myChart.addMeasureAxis("y", "value");
+    var y = myChart.addMeasureAxis("y", "value");
+    y.title = "Production d'électricité renouvelable (KWh)";
+    myChart.defaultColors = [
+        new dimple.color("#09A785", "#FF483A", 1),
+    ];
     var s = myChart.addSeries(null, dimple.plot.line);
     s.lineMarkers = true;
     myChart.draw();
 }
 
 function annee_filter(data){
-    return data.filter(function(d){return d.annee === annee_c;});
+    return data.filter(function(d){return d.annee === annee_p;});
 }
 
 function get_ProdInfo(data){
@@ -56,13 +69,13 @@ function get_ProdInfo(data){
         "Secteur": "Photovoltaïque",
         "Production": d3.sum(data.filter(d=>d.secteur === "pv"),d=>d.production)
     },{
-        "Secteur": "Hydrolique",
+        "Secteur": "Hydraulique",
         "Production": d3.sum(data.filter(d=>d.secteur === "hyd"),d=>d.production)
     },{
         "Secteur": "Eolien",
         "Production": d3.sum(data.filter(d=>d.secteur === "eol"),d=>d.production)
     },{
-        "Secteur": "Bioenérgie",
+        "Secteur": "Bioénergie",
         "Production": d3.sum(data.filter(d=>d.secteur === "bionrj"),d=>d.production)
     },{
         "Secteur": "Autres",
@@ -166,6 +179,7 @@ function showPordTooltip_pie(sec, prod, coords){
 }
 
 function drawPieProd(data){
+    console.log(data);
     let body = d3.select("#piechart_prod");
     let bodyHeight = 200;
     let bodyWidth = 220;
@@ -177,8 +191,8 @@ function drawPieProd(data){
     
     let pie = d3.pie()
         .value(d => d.production);
-    let colorScale = d3.scaleOrdinal().domain(data)
-        .range(["#18A1CD", "#09A785", "#09BB9F", "#39F3BB", "#FFB55F", "#FF8900", "#FF483A"])
+    let colorScale = d3.scaleOrdinal().domain(["Photovoltaïque","Hydraulique","Eolien","Bioénergie","Autres"])
+        .range(["#3082A3", "#41A8C9", "#23617B", "#32A785", "#FAB45A"])
     let arc = d3.arc()
         .outerRadius(bodyHeight / 2)
         .innerRadius(60);
@@ -189,6 +203,7 @@ function drawPieProd(data){
         
     g.append("path")
         .attr("d", arc)
+        .style("stroke", "white")
         .attr("fill", d => {
             return colorScale(d.data.secteur)
         })

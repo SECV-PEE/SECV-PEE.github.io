@@ -26,8 +26,10 @@ d3.csv("data/page5_transport/mobilite_immatriculation.csv").then((data)=>{
         new dimple.color("#FF8900", "#FFFFFF", 1),
         new dimple.color("#39F3BB", "#FFFFFF", 1)
     ];
-    myChart.addCategoryAxis("x", ["DATE"]);
-    myChart.addPctAxis("y", "NOMBRE");
+    var x = myChart.addCategoryAxis("x", ["DATE"]);
+    var y = myChart.addPctAxis("y", "NOMBRE");
+    y.title = "Pourcentage";
+    x.title = "Date d'immatriculation";
     myChart.addSeries("CRIT_AIR", dimple.plot.bar);
     myChart.addLegend(200, 10, 180, 20, "right");
     myChart.draw();
@@ -60,7 +62,9 @@ var svg_NO2 = dimple.newSvg("#linechart_NO2", 430, 300);
         new dimple.color("#1D81A2", "#186F8A", 1)
     ];
       var x = linechart_NO2.addCategoryAxis("x", "ANNEE");
-      linechart_NO2.addMeasureAxis("y", "NO2");
+      var y = linechart_NO2.addMeasureAxis("y", "NO2");
+      y.title = "Concentration de NO2 (µg/m³ )";
+      x.title = "Année";
       var s = linechart_NO2.addSeries("SOURCE", dimple.plot.line);
       s.lineMarkers = true;
       linechart_NO2.addLegend(60, 10, 400, 20, "right");
@@ -72,8 +76,11 @@ var svg_ges = dimple.newSvg("#mixchart_ges", 440, 300);
         var mixchart_ges = new dimple.chart(svg_ges, data);
         mixchart_ges.setBounds(60, 30, 300, 205);
         var x = mixchart_ges.addCategoryAxis("x", "ANNEE");
-        y1 = mixchart_ges.addMeasureAxis("y", "CONSOMMATION");
-        y2 = mixchart_ges.addMeasureAxis("y", "EMISSION");
+        var y1 = mixchart_ges.addMeasureAxis("y", "CONSOMMATION");
+        var y2 = mixchart_ges.addMeasureAxis("y", "EMISSION");
+        x.title = "Année";
+        y1.title = "Consommation (MWh)";
+        y2.title = "Emission (kteq CO2)";
         var ges = mixchart_ges.addSeries(null, dimple.plot.line,[x, y2]);
         ges.lineMarkers = true;
         mixchart_ges.defaultColors = [

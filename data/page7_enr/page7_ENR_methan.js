@@ -1,4 +1,13 @@
 
+///////////////////////////////////////////
+//Parametre a modifier
+// Choisir l'annee pour afficher par defaut
+
+var annee_dernier = 2020;
+
+///////////////////////////////////////////
+
+
 let body_enr_methan = d3.select("#body_enr_methan");
 
 d3.csv("data/page7_enr/page7_chiffres_cles.csv").then((data)=>{
@@ -23,7 +32,7 @@ Promise.all([
     mapInfo_methan = datasources[1];
     data_methan = datasources[0];
     history_methan = get_history_methan(data_methan);
-    data_methan = data_methan.filter(function(d){return d.Annee < 2020;});
+    data_methan = data_methan.filter(function(d){return d.Annee < annee_dernier;});
     prepare_methan_data(mapInfo_methan, data_methan);
     drawProdMap_methan(data_methan, mapInfo_methan);
     methanLineChart(history_methan);
@@ -65,7 +74,9 @@ function methanLineChart(data){
     methan.setBounds(60, 20, 360, 230);
     var x = methan.addCategoryAxis("x", "year");
     x.addOrderRule("year");
-    methan.addMeasureAxis("y", "value");
+    var y = methan.addMeasureAxis("y", "value");
+    y.title = "Production de biomasse (MWh)";
+    x.title = "Année";
     var s = methan.addSeries(null, dimple.plot.line);
     s.lineMarkers = true;
     methan.draw();

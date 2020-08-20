@@ -34,7 +34,9 @@ function bioLineChart(data){
     bio.setBounds(60, 20, 370, 230);
     var x = bio.addCategoryAxis("x", "year");
     x.addOrderRule("year");
-    bio.addMeasureAxis("y", "value");
+    var y = bio.addMeasureAxis("y", "value");
+    x.title = "Année";
+    y.title = "Production de biomasse (MWh)"
     var s = bio.addSeries(null, dimple.plot.line);
     s.lineMarkers = true;
     bio.draw();

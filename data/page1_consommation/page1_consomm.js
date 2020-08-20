@@ -1,3 +1,12 @@
+
+///////////////////////////////////////////
+//Parametre a modifier
+// Choisir l'annee pour afficher par defaut
+
+var annee_c = "2017";
+
+///////////////////////////////////////////
+
 var width = 600,
     height = 400, 
     centered;
@@ -8,11 +17,9 @@ const geojson_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype
 const data_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype-DRIEE-TDB/master/airparif_consommation_epci.csv";
 const chiffres_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype-DRIEE-TDB/master/page_chiffre_cles.csv"
 
-var annee_c = "2017";
 var mapInfo = undefined;
 var data = undefined;
 var selectedEPCI = undefined;
-
 
 Promise.all([
     d3.csv("data/page1_consommation/airparif_consommation_epci.csv"),
@@ -35,6 +42,14 @@ Promise.all([
 
 function set_html(id, text){
     document.getElementById(id).innerHTML = text;
+}
+
+function draw_pie_region(){
+    d3.csv("data/page1_consommation/airparif_consommation_epci.csv").then((data)=>{
+        data = annee_filter(data);
+        var sec_info = get_secteurInfo(data);
+        drawPie(sec_info);
+    })
 }
 
 function get_secteurInfo(data){
@@ -248,7 +263,8 @@ function showTooltip(nom, conso, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>EPCI : </b>" + nom + "<br>"
-            + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>")
+            + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>"
+            + "<b>Année : </b>" + annee_c + "<br>")
         
 }
 
@@ -261,8 +277,8 @@ function showTooltipPie(sec, conso, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Secteur : </b>" + sec + "<br>"
-                    + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>")
-        
+        + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>"
+        + "<b>Année : </b>" + annee_c + "<br>")
 }
 
 function showTooltipTree(sec, conso, taux, coords){
@@ -352,11 +368,12 @@ function drawPie(data){
         secteur: d.Secteur,
         consommation: +d.Consommation
     }))
-    
+
     let pie = d3.pie()
         .value(d => d.consommation);
-    let colorScale = d3.scaleOrdinal().domain(data)
-        .range(["#18A1CD", "#09A785", "#09BB9F", "#39F3BB", "#FFB55F", "#FF8900", "#FF483A"])
+    let colorScale = d3.scaleOrdinal()
+        .domain(["Agriculture","Tertiaire","Industrie","Residentiel","Transport Routier"])
+        .range(["#09A785", "#FFB55F", "#EE5126", "#FF8900", "#15607A"]);
     let arc = d3.arc()
         .outerRadius(bodyHeight / 2)
         .innerRadius(60);
@@ -367,10 +384,11 @@ function drawPie(data){
         
     g.append("path")
         .attr("d", arc)
+        .style("stroke", "white")
         .attr("fill", d => {
-            return colorScale(d.data.secteur)})
+            return colorScale(d.data.secteur)
+        })
         .on("mousemove", (d)=>{
-            console.log(d.data.secteur);
             showTooltipPie(d.data.secteur, d.data.consommation,[d3.event.pageX + 30, d3.event.pageY - 30]);})
         .on("mouseleave", d=>{
             d3.select("#tooltip2").style("display","none")});
@@ -463,6 +481,9 @@ function drawLineChart(data){
     x.addOrderRule("Annee");
     var y1 = myChart.addMeasureAxis("y", "Consommation_totale");
     var y2 = myChart.addMeasureAxis("y", "Consommation_moyenne");
+    y1.title = "Consommation totale (GWh)"
+    y2.title = "Consommation par habitant (KWh)"
+    x.title ="Année"
     var s = myChart.addSeries(null, dimple.plot.bar,[x,y1]);
     var t = myChart.addSeries(null, dimple.plot.line,[x,y2]);
     t.lineMarkers = true;

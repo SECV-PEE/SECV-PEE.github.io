@@ -11,13 +11,25 @@
     <!--------------------------->
     <!-- PAGE 0 - CHIFFRE CLES -->
     <!--------------------------->
+    <div style="width: 900px; height: 280px;">
+        <img src="image/page0_chiffres_cles/logo_prif.png" width="185" height="150" alt="">
+        <h1 class="grand-titre">BILAN ENERGETIQUE DE L'ILE-DE-FRANCE</h1>
 
-    <h1 class="grand-titre">BILAN ENERGETIQUE DE L'ILE-DE-FRANCE</h1>
-    <h1 class="grand-titre">CHIFFRE CLES</h1>
-    <p>Passez le curseur sur les chiffres pour en savoir plus.</p>
+    </div>
+    
+    <h2 >CHIFFRE CLES</h2>
     <div class="seperateur">
         <h2>Profil énergétique Francilien</h2>
+        <p>Passez le curseur sur les chiffres pour en savoir plus.</p>
+        <div class="header">
+            <div id="info-logo">
+                <img src="image/page0_chiffres_cles/info.png" width="24" height="20" alt="">
+            </div>
+            <p>Connaissiez-vous ces unités énergétiques?</p>
+            <img class="img-unite" src="image/page0_chiffres_cles/info-unite.png" width="660" height="220" alt="unite">
+        </div>
     </div>
+    
     <div id="consomm" class="bloc-general">
         <a href="#page_01">
             <img src="image/page0_chiffres_cles/consomm_logo.png" id="consom_logo" alt="logo" class="logo">
@@ -431,7 +443,7 @@
 
     <div id="container-general">
         <div>
-            <h1 class="grand-titre"> Equilibre d’énergie régionale</h1>
+            <h3 class="grand-titre"> Equilibre d’énergie régionale</h3>
             <a href="https://opendata.reseaux-energies.fr/explore/dataset/equilibre-regional-mensuel-prod-conso-brute/information/?disjunctive.region">Source: Open Data Réseaux Énergies</a>
         </div>
         <img src="image/page1_consommation/legend_equilibre.png" style="width: 680px; height: 51px;" alt="legend"> 
@@ -458,7 +470,7 @@
                 </svg>
             </div>
             <div id="container_inner_cartes" style="width: 450px;">
-                <h4>L'évolution de la consommation d'énergie</h4>
+                <h4>L'évolution de la consommation régionale d'énergie</h4>
                 <svg id="container_linechart" height="210" width="400">
                     <g class="xAxis" />
                     <g class="yAxis" />
@@ -467,13 +479,19 @@
                     </g>
                 </svg>
                 <h4>Répartition par secteurs</h4>
-                <svg id="container_pie" height="200" width="220">
-                    <g id="piechart" transform="translate(100,100)"></g>
-                </svg>
+                <button class="button-region" onclick="draw_pie_region()">Régionale</button>
+                <div>
+                    <svg id="container_pie" height="200" width="220">
+                        <g id="piechart" transform="translate(100,100)"></g>
+                    </svg>
+                    <img src="image/page1_consommation/legend_pie.png" height="200" width="108" alt="legend">
+                </div>
+                
+                
             </div>
         </div>
         <div style="text-align: left;">
-            <h4 style="width: 400px;">Répartition par type d'énergie</h4>
+            <h4 >Répartition de la consommation régionale par type d'énergie</h4>
             <svg id="container_treemap" height="300" width="900"></svg>
         </div>
         
@@ -503,7 +521,7 @@
             </div>
         </div>
         <p class="description">(Place retenue pour la description.)</p>
-        <div id="emission_container_generale" style="width: 900px; height: 600px;" >
+        <div id="emission_container_generale" style="width: 900px; height: 800px;" >
             <div>
                 <h3>Emission des gaz à effet de serre (GES) par EPCI en île-de-France</h3>
                 <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=cfatale">Source: AIRPARIF, ENERGIF</a>
@@ -519,18 +537,29 @@
             </div>
             <div class="carte">
                 <img src="image/page2_emission/legend_emiss.png" alt="legend" width="450" height="67">
-                <svg id="emission_container" width="450" height="375">
+                <svg id="emission_container" width="450" height="350">
                     <g id="body_emiss"></g>
                 </svg>
             </div>
             
-            <div id="emission_cartes" style="width: 350px;">
-                <h4>Répartition par secteurs</h4>
-                <svg id="container_pie_emiss" height="300" width="320">
-                    <g id="piechart_emiss" transform="translate(150,150)"></g>
+            <div id="emission_cartes" style="width: 450px;">
+                <h4>L'évolution de la consommation régionale d'énergie</h4>
+                <svg id="container_linechart_emiss" height="210" width="400">
+                    <g class="xAxis" />
+                    <g class="yAxis" />
+                    <g class="body">
+                        <path style="stroke: black" />
+                    </g>
                 </svg>
+                <h4>Répartition par secteurs</h4>
+                <button class="button-region" onclick="draw_pie_emiss_region()">Régionale</button>
+                <div>
+                    <svg id="container_pie_emiss" height="220" width="240">
+                        <g id="piechart_emiss" transform="translate(110,110)"></g>
+                    </svg>
+                    <img src="image/page2_emission/legend_pie_emiss.png" width="140" height="200" alt="">
+                </div>
             </div>
-            
         </div>
 
 
@@ -612,7 +641,7 @@
         
 
         <!---------------------------------------->
-        <!-- PAGE 5 - MOBILITE EN îLE-DE-FRANCE -->
+        <!-- PAGE 5 - MOBILITE EN ILE-DE-FRANCE -->
         <!---------------------------------------->
         <div class="seperateur">
             <h1 id="page_05" class="grand-titre">MOBILITE EN ILE-DE-FRANCE</h1>
@@ -762,10 +791,14 @@
             </div>
             
             <div id="production-subcarte" style="width: 450px; height: 600px;">
-                <h4>Répartition par source d'énergie</h4>
-                <svg id="container_pie_prod" height="200" width="220">
-                    <g id="piechart_prod" transform="translate(100,100)"></g>
-                </svg>
+                <h4>Répartition de la production régionale d'électricité renouvelable par source d'énergie</h4>
+                <div>
+                    <svg id="container_pie_prod" height="200" width="220">
+                        <g id="piechart_prod" transform="translate(100,100)"></g>
+                    </svg>
+                    <img src="image/page7_enr/legend_prod_pie.png" width="115" height="200" alt="legend">
+                </div>
+                
                 <h4>L'évolution de la production annuelle régionale d'électricité renouvelable</h4>
                 <svg id="linechart_prod" height="180" width="420">
                     <g class="xAxis" />
@@ -789,6 +822,7 @@
         <div id="tooltip_biomasse" class="tt">Tooltip</div>
         <div id="tooltip_methan" class="tt">Tooltip</div>
         <div id="tooltip_pv" class="tt">Tooltip</div>
+
     </div>
 </body>
 

@@ -33,8 +33,11 @@ function draw_gth_line(){
         var line_gth = new dimple.chart(svg_gth, data);
         line_gth.setBounds(60, 30, 330, 230);
         var x = line_gth.addCategoryAxis("x", "ANNEE");
+        x.title = "Année"; 
         y1 = line_gth.addMeasureAxis("y", "NB_LOGEMENT");
         y2 = line_gth.addMeasureAxis("y", "PRODUCTION");
+        y1.title ="Nombre des logements raccordés";
+        y2.title = "Production de géothermie (MWh)";
         var ges = line_gth.addSeries(null, dimple.plot.line,[x, y2]);
         ges.lineMarkers = true;
         line_gth.defaultColors = [

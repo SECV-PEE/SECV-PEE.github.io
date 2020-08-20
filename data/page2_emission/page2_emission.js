@@ -1,4 +1,14 @@
 
+///////////////////////////////////////////
+//Parametre a modifier
+//Choisir l'annee pour afficher par defaut
+
+var annee_e = "2017";
+
+///////////////////////////////////////////
+
+
+
 let body_emiss = d3.select("#body_emiss");
 
 
@@ -9,6 +19,8 @@ Promise.all([
     mapInfo = datasources[1];
     data_emiss = datasources[0];
     update_chiffre_emission();
+    line_emiss = get_history_emiss(data_emiss);
+    drawLineChart_emiss(line_emiss);
     data_emiss = annee_filter_emission(data_emiss);
     var sec_info = get_emissionInfo(data_emiss);
     console.log(sec_info);
@@ -20,12 +32,13 @@ Promise.all([
 function get_history_emiss(data){
     let years = data.map(function(d){return d.annee;});
     years = [...new Set(years)]
+    console.log(years);
     let history = []
     for (let y of years){
         history.push({
             annee: y,
             emission_totale: d3.sum(data.filter(function(d){return d.annee === y;}),
-                d=>d.emission)/1000,
+                d=>d.emission),
             emission_moyenne: d3.sum(data.filter(function(d){return d.annee === y;}),
             d=>d.emission)/12150
         });
@@ -35,13 +48,15 @@ function get_history_emiss(data){
 }
 
 function drawLineChart_emiss(data){
-    var svg = d3.select("#emiss_linechart")
+    var svg = d3.select("#container_linechart_emiss")
     var myChart = new dimple.chart(svg, data);
     myChart.setBounds(50, 20, 300, 140);
-    var x = myChart.addCategoryAxis("x", "Annee");
-    x.addOrderRule("Annee");
+    var x = myChart.addCategoryAxis("x", "annee");
+    x.addOrderRule("annee");
     var y1 = myChart.addMeasureAxis("y", "emission_totale");
     var y2 = myChart.addMeasureAxis("y", "emission_moyenne");
+    y1.title = "Emission totale (kteq CO2)";
+    y2.title = "Emission par habitant (teq CO2)";
     var s = myChart.addSeries(null, dimple.plot.bar,[x,y1]);
     var t = myChart.addSeries(null, dimple.plot.line,[x,y2]);
     t.lineMarkers = true;
@@ -51,7 +66,6 @@ function drawLineChart_emiss(data){
     myChart.draw();
 }
 
-var annee_c = "2017";
 var selectedEPCI = undefined;
 
 function update_chiffre_emission(){
@@ -73,7 +87,7 @@ function update_chiffre_emission(){
 
 
 function annee_filter_emission(data){
-    return data.filter(function(d){return d.annee === annee_c;});
+    return data.filter(function(d){return d.annee === annee_e;});
 }
 
 function prepare_emiss_data(mapInfo, data){
@@ -170,7 +184,8 @@ function showEmissTooltip_pie(sec, emiss, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Secteur : </b>" + sec + "<br>"
-            + "<b>Emission : </b>" + Math.round(emiss) + "teq CO2<br>")
+            + "<b>Emission : </b>" + Math.round(emiss) + "teq CO2<br>"
+            + "<b>Année : </b>" + annee_e + "<br>")
         
 }
 
@@ -183,14 +198,15 @@ function showEmissTooltip(nom, emiss, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>EPCI : </b>" + nom + "<br>"
-            + "<b>Emission : </b>" + emiss + "teq CO2<br>")
+            + "<b>Emission : </b>" + emiss + "teq CO2<br>"
+            + "<b>Année : </b>" + annee_e + "<br>")
         
 }
 
 function drawPieEmiss(data){
     let body = d3.select("#piechart_emiss");
-    let bodyHeight = 300;
-    let bodyWidth = 320;
+    let bodyHeight = 220;
+    let bodyWidth = 220;
 
     data = data.map(d => ({
         secteur: d.Secteur,
@@ -199,11 +215,12 @@ function drawPieEmiss(data){
     
     let pie = d3.pie()
         .value(d => d.emission);
-    let colorScale = d3.scaleOrdinal().domain(data)
-        .range(["#18A1CD", "#09A785", "#09BB9F", "#39F3BB", "#FFB55F", "#FF8900", "#FF483A"])
+    let colorScale_emiss = d3.scaleOrdinal().domain(["Agriculture","Residentiel","Industrie","Tertiaire",
+    "Transport Routier","Transport Autres","Production-Energie"])
+        .range(["#09A785", "#FF8900", "#EE5126", "#FFB55F", "#15607A", "#1D81A2", "#18A1CD"])
     let arc = d3.arc()
         .outerRadius(bodyHeight / 2)
-        .innerRadius(80);
+        .innerRadius(70);
     let g = body.selectAll(".arc")
         .data(pie(data))
         .enter()
@@ -212,8 +229,9 @@ function drawPieEmiss(data){
     g.append("path")
         .attr("d", arc)
         .attr("fill", d => {
-            return colorScale(d.data.secteur)
+            return colorScale_emiss(d.data.secteur)
         })
+        .style("stroke", "white")
         .on("mousemove", (d)=>{
             showEmissTooltip_pie(d.data.secteur, d.data.emission,[d3.event.pageX + 30, d3.event.pageY - 30]);
         })
@@ -223,10 +241,18 @@ function drawPieEmiss(data){
         
 }
 
+function draw_pie_emiss_region(){
+    d3.csv("data/page2_emission/airparif_emission_epci.csv").then((data)=>{
+        data = annee_filter_emission(data);
+        var sec_info = get_emissionInfo(data);
+        drawPieEmiss(sec_info);
+    })
+}
+
 
 function change_year_emission(a){
     d3.csv("data/page2_emission/airparif_emission_epci.csv").then((data_s)=>{
-        annee_c = a;
+        annee_e = a;
         data_emiss = annee_filter_emission(data_s);
         var sec_info = get_emissionInfo(data_emiss);
         drawPieEmiss(sec_info);
@@ -254,6 +280,9 @@ function get_emissionInfo(data){
     },{
         "Secteur": "Transport Autres",
         "Emission": d3.sum(data.filter(d=>d.secteur === "Transport_A"),d=>d.emission)
+    },{
+        "Secteur": "Production-Energie",
+        "Emission": d3.sum(data.filter(d=>d.secteur === "Production-Energie"),d=>d.emission)
     }];
     return sec_info;
 }
