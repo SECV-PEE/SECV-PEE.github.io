@@ -26,7 +26,6 @@ function prepare_pv_data(mapInfo_pv, data){
         d.properties.production = prod;
         return d;
     });
-    console.log(mapInfo_pv);
 }
 
 function drawProdMap_pv(mapInfo_pv){
@@ -36,11 +35,10 @@ function drawProdMap_pv(mapInfo_pv){
     
     let midProd_pv = d3.median(mapInfo_pv.features,
         d => d.properties.production);
-    console.log(maxProd_pv, midProd_pv);
 
     let cScale = d3.scaleLinear()
         .domain([0, midProd_pv, maxProd_pv])
-        .range(["#FFD29B","#FFB55F", "#FF8900"]);
+        .range(["#97DDF3","#18A1CD", "#1D81A2"]);
 
     let projection = d3.geoMercator()
         .center([3.9, 48.4])
@@ -74,6 +72,6 @@ function showpvTooltip(nom, prod, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
-                    + "<b>Nombre de site de PV en 2017: </b>" + prod )
+                    + "<b>Nombre de site PV: </b>" + prod )
         
 }

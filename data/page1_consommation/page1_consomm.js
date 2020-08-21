@@ -13,17 +13,13 @@ var width = 600,
 
 let body = d3.select("#body");
 
-const geojson_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype-DRIEE-TDB/master/EPCI-ile-de-france.geojson";
-const data_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype-DRIEE-TDB/master/airparif_consommation_epci.csv";
-const chiffres_url = "https://raw.githubusercontent.com/Theo-ZiweiWu/Prototype-DRIEE-TDB/master/page_chiffre_cles.csv"
-
 var mapInfo = undefined;
 var data = undefined;
 var selectedEPCI = undefined;
 
 Promise.all([
     d3.csv("data/page1_consommation/airparif_consommation_epci.csv"),
-    d3.json(geojson_url)
+    d3.json("data/page1_consommation/EPCI-ile-de-france.geojson")
 ]).then((datasources)=>{
     update_chiffre_cles();
     update_chiffre_consommation();
@@ -54,18 +50,23 @@ function draw_pie_region(){
 
 function get_secteurInfo(data){
     var sec_info = [{
+        "Nom": "Régionale",
         "Secteur": "Agriculture",
         "Consommation": d3.sum(data.filter(d=>d.secteur === "AGR"),d=>d.consommation)
     },{
+        "Nom": "Régionale",
         "Secteur": "Tertiaire",
         "Consommation": d3.sum(data.filter(d=>d.secteur === "TER"),d=>d.consommation)
     },{
+        "Nom": "Régionale",
         "Secteur": "Industrie",
         "Consommation": d3.sum(data.filter(d=>d.secteur === "IND"),d=>d.consommation)
     },{
+        "Nom": "Régionale",
         "Secteur": "Residentiel",
         "Consommation": d3.sum(data.filter(d=>d.secteur === "RES"),d=>d.consommation)
     },{
+        "Nom": "Régionale",
         "Secteur": "Transport Routier",
         "Consommation": d3.sum(data.filter(d=>d.secteur === "TRAF"),d=>d.consommation)
     }];
@@ -92,7 +93,7 @@ function get_energieInfo(data){
         "Consommation": conso_p,
         "Taux": conso_p/conso_totale
     },{
-        "Energie": "URB", 
+        "Energie": "Chauffage urbain", 
         "Consommation": conso_u,
         "Taux": conso_u/conso_totale
     },{
@@ -100,7 +101,6 @@ function get_energieInfo(data){
         "Consommation": conso_b,
         "Taux": conso_b/conso_totale
     }];
-    console.log(eng_info);
     return eng_info;
 }
 
@@ -265,10 +265,9 @@ function showTooltip(nom, conso, coords){
         .html("<b>EPCI : </b>" + nom + "<br>"
             + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>"
             + "<b>Année : </b>" + annee_c + "<br>")
-        
 }
 
-function showTooltipPie(sec, conso, coords){
+function showTooltipPie(nom, sec, conso, coords){
     let x = coords[0];
     let y = coords[1];
 
@@ -276,7 +275,8 @@ function showTooltipPie(sec, conso, coords){
         .style("display", "block")
         .style("top", (y)+"px")
         .style("left", (x)+"px")
-        .html("<b>Secteur : </b>" + sec + "<br>"
+        .html("<b>EPCI : </b>" + nom + "<br>"
+        + "<b>Secteur : </b>" + sec + "<br>"
         + "<b>Consommation : </b>" + Math.round(conso/1000) + "GWh<br>"
         + "<b>Année : </b>" + annee_c + "<br>")
 }
@@ -298,12 +298,11 @@ function showTooltipTree(sec, conso, taux, coords){
 function drawTreemap(data){
     let width_map = 900;
     let height_map = 250;
-    console.log(data);
     var svg_tree = d3.select("#container_treemap")
         .attr("transform", "translate(" + 10 + ", " + 10 + ")");
         
     var color_tree = d3.scaleOrdinal()
-    .domain(["Electricité", "Produit pétrolier et charbon", "Gaz Naturel", "URB", "Bois"])
+    .domain(["Electricité", "Produit pétrolier et charbon", "Gaz Naturel", "Chauffage urbain", "Bois"])
     .range(["#18A1CD", "#525252", "#09BB9F", "#F67272", "#09A785"]);
 
     root = {};
@@ -353,7 +352,13 @@ function drawTreemap(data){
         .append("text")
         .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
         .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-        .text(function(d){ return d.data.energie })
+        .text(function(d){ 
+            if(d.data.taux > 0.1){
+                return d.data.energie;
+            }else{
+                return " ";
+            }
+        })
         .attr("font-size", "15px")
         .attr("fill", "white")
 
@@ -365,6 +370,7 @@ function drawPie(data){
     let bodyWidth = 220;
 
     data = data.map(d => ({
+        nom: d.Nom,
         secteur: d.Secteur,
         consommation: +d.Consommation
     }))
@@ -389,21 +395,146 @@ function drawPie(data){
             return colorScale(d.data.secteur)
         })
         .on("mousemove", (d)=>{
-            showTooltipPie(d.data.secteur, d.data.consommation,[d3.event.pageX + 30, d3.event.pageY - 30]);})
+            showTooltipPie(d.data.nom, d.data.secteur, d.data.consommation,[d3.event.pageX + 30, d3.event.pageY - 30]);})
         .on("mouseleave", d=>{
             d3.select("#tooltip2").style("display","none")});
+}
+
+function update_tree(eng_info){
+    var color_tree = d3.scaleOrdinal()
+        .domain(["Electricité", "Produit pétrolier et charbon", "Gaz Naturel", "Chauffage urbain", "Bois"])
+        .range(["#18A1CD", "#525252", "#09BB9F", "#F67272", "#09A785"]);
+    var svg_tree = d3.select("#container_treemap")
+        .attr("transform", "translate(" + 10 + ", " + 10 + ")");
+    root = {};
+    root["name"] = "root";
+    children = [];
+    for(let c of eng_info){
+        obj = {
+            energie: c.Energie,
+            parent: "Root",
+            consommation: c.Consommation,
+            taux: c.Taux
+        };
+        children.push(obj);
+    }
+    root["children"] = children;
+    tree = d3.hierarchy(root);
+    tree.sum(function(d) { return +d.consommation})
+
+    d3.treemap()
+    .size([900, 250])
+    .padding(4)
+    (tree)
+    
+    svg_tree
+        .selectAll("rect")
+        .data(tree.leaves())
+        .attr('x', function (d) { return d.x0; })
+        .attr('y', function (d) { return d.y0; })
+        .attr('width', function (d) { return d.x1 - d.x0; })
+        .attr('height', function (d) { return d.y1 - d.y0; })
+        .style("stroke", "white")
+        .style("fill", function(d) { return color_tree(d.data.energie);})
+        .on("mousemove", (d)=>{
+            showTooltipTree(d.data.energie, d.data.consommation, d.data.taux,[d3.event.pageX + 15, d3.event.pageY - 15]);})
+        .on("mouseleave", d=>{
+            d3.select("#tooltip_tree").style("display","none")});
+    
+    // and to add the text labels
+    svg_tree
+        .selectAll("text")
+        .data(tree.leaves())
+        .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
+        .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
+        .text(function(d){ 
+            if(d.data.taux > 0.1){
+                return d.data.energie;
+            }else{
+                return " ";
+            }
+        })
+        .attr("font-size", "15px")
+        .attr("fill", "white")
 }
 
 function change_year(a){
     d3.csv("data/page1_consommation/airparif_consommation_epci.csv").then((data_s)=>{
         annee_c = a;
-        data = annee_filter(data_s);
-        var sec_info = get_secteurInfo(data);
-        var eng_info = get_energieInfo(data);
-        drawTreemap(eng_info);
+        data_n = annee_filter(data_s);
+        var sec_info = get_secteurInfo(data_n);
+        var eng_info = get_energieInfo(data_n);
+        update_tree(eng_info);
+        
         drawPie(sec_info);
-        prepare_data(mapInfo, data);
-        drawMap(data, mapInfo,"conso_tot");
+        prepare_data(mapInfo, data_n);
+
+        let maxConso = d3.max(mapInfo.features,
+            d => d.properties.conso_tot);
+
+        let cScale = d3.scaleLinear()
+            .domain([0, 1000000, 2000000, 3000000, 4000000, maxConso])
+            .range(["#18A1CD","#09A785", "#0AD8A2","#FFD29B","#FFB55F","#FF8900"]);
+        body.selectAll("path").data(mapInfo.features)
+            .attr("fill",d => d.properties.conso_tot ?
+                cScale(d.properties.conso_tot): "white")
+            .attr("stroke", "white")
+            .on("mouseover", (d)=>{
+                showTooltip(d.properties.nom, d.properties.conso_tot,
+                    [d3.event.pageX + 30, d3.event.pageY - 30]);
+            })
+            .on("mouseleave", d=>{
+                d3.select("#tooltip").style("display","none");
+            })
+            .on("click", d=> {
+                selectedEPCI = d.properties.nom;
+                conso_totale = d.properties.conso_elec+d.properties.conso_bois+
+                    d.properties.conso_gn+d.properties.conso_pp_cms+d.properties.conso_urb;
+                let pie_data = [{
+                    "Nom": d.properties.nom,
+                    "Secteur": "Agriculture",
+                    "Consommation": d.properties.conso_agr
+                },{
+                    "Nom": d.properties.nom,
+                    "Secteur": "Tertiaire",
+                    "Consommation": d.properties.conso_ter
+                },{
+                    "Nom": d.properties.nom,
+                    "Secteur": "Industrie",
+                    "Consommation": d.properties.conso_ind
+                },{
+                    "Nom": d.properties.nom,
+                    "Secteur": "Residentiel",
+                    "Consommation": d.properties.conso_res
+                },{
+                    "Nom": d.properties.nom,
+                    "Secteur": "Transport Routier",
+                    "Consommation": d.properties.conso_traf
+                }];
+                let tree_data = [{
+                    "Energie": "Electricité", 
+                    "Consommation": d.properties.conso_elec,
+                    "Taux": d.properties.conso_elec/conso_totale
+                },{
+                    "Energie": "Gaz Naturel", 
+                    "Consommation": d.properties.conso_gn,
+                    "Taux": d.properties.conso_gn/conso_totale
+                },{
+                    "Energie": "Produit pétrolier et charbon", 
+                    "Consommation": d.properties.conso_pp_cms,
+                    "Taux": d.properties.conso_pp_cms/conso_totale
+                },{
+                    "Energie": "Chauffage urbain", 
+                    "Consommation": d.properties.conso_urb,
+                    "Taux": d.properties.conso_urb/conso_totale
+                },{
+                    "Energie": "Bois", 
+                    "Consommation": d.properties.conso_bois,
+                    "Taux": d.properties.conso_bois/conso_totale
+                }];
+                update_tree(tree_data);
+                drawPie(pie_data);
+            })
     })
 }
 
@@ -469,7 +600,6 @@ function get_history(data){
             d=>d.consommation)/12150
         });
     }
-    console.log(history)
     return history;
 }
 
@@ -494,20 +624,12 @@ function drawLineChart(data){
 }
 
 function drawMap(data, mapInfo, sec){
-    
     let maxConso = d3.max(mapInfo.features,
         d => d.properties[sec]);
-    
-    let midConso = d3.median(mapInfo.features,
-        d => d.properties[sec]);
-    console.log(maxConso, midConso);
 
     let cScale = d3.scaleLinear()
         .domain([0, 1000000, 2000000, 3000000, 4000000, maxConso])
         .range(["#18A1CD","#09A785", "#0AD8A2","#FFD29B","#FFB55F","#FF8900"]);
-
-    let bodyHeight = width;
-    let bodyWidth = height;
 
     let projection = d3.geoMercator()
         .center([3.9, 48.45])
@@ -532,22 +654,51 @@ function drawMap(data, mapInfo, sec){
         })
         .on("click", d=> {
             selectedEPCI = d.properties.nom;
+            conso_totale = d.properties.conso_elec+d.properties.conso_bois+
+                d.properties.conso_gn+d.properties.conso_pp_cms+d.properties.conso_urb;
             let pie_data = [{
+                "Nom": d.properties.nom,
                 "Secteur": "Agriculture",
                 "Consommation": d.properties.conso_agr
             },{
+                "Nom": d.properties.nom,
                 "Secteur": "Tertiaire",
                 "Consommation": d.properties.conso_ter
             },{
+                "Nom": d.properties.nom,
                 "Secteur": "Industrie",
                 "Consommation": d.properties.conso_ind
             },{
+                "Nom": d.properties.nom,
                 "Secteur": "Residentiel",
                 "Consommation": d.properties.conso_res
             },{
+                "Nom": d.properties.nom,
                 "Secteur": "Transport Routier",
                 "Consommation": d.properties.conso_traf
             }];
+            let tree_data = [{
+                "Energie": "Electricité", 
+                "Consommation": d.properties.conso_elec,
+                "Taux": d.properties.conso_elec/conso_totale
+            },{
+                "Energie": "Gaz Naturel", 
+                "Consommation": d.properties.conso_gn,
+                "Taux": d.properties.conso_gn/conso_totale
+            },{
+                "Energie": "Produit pétrolier et charbon", 
+                "Consommation": d.properties.conso_pp_cms,
+                "Taux": d.properties.conso_pp_cms/conso_totale
+            },{
+                "Energie": "Chauffage urbain", 
+                "Consommation": d.properties.conso_urb,
+                "Taux": d.properties.conso_urb/conso_totale
+            },{
+                "Energie": "Bois", 
+                "Consommation": d.properties.conso_bois,
+                "Taux": d.properties.conso_bois/conso_totale
+            }];
+            update_tree(tree_data);
             drawPie(pie_data);
         })
         

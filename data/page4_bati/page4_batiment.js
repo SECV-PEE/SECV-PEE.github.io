@@ -84,7 +84,6 @@ d3.json("data/page4_bati/dpe_sankey.json").then((graph)=>{
     "#32984F","#96CE5D", "#DAEE88","#FFFEBD","#FBDF88","#F58C55","#D02D20","E0E0E0",
     "#EEF8FB","#C1D3E7", "#A1BDDB","#8D97C7","#8A6CB2","#85439E","#6A056C","E0E0E0"]);
 
- console.log(node);
 // add the rectangles for the nodes
   node.append("rect")
       .attr("height", function(d) { return d.dy; })

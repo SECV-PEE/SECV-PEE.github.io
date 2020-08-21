@@ -1,13 +1,13 @@
 
 ///////////////////////////////////////////
-//Parametre a modifier
-// Choisir l'annee pour afficher par defaut
+// Parametre a modifier
+// Choisir l'annee afficher par defaut
 
 var annee_dernier = 2020;
 
 ///////////////////////////////////////////
 
-
+var mapInfo_methan = undefined;
 let body_enr_methan = d3.select("#body_enr_methan");
 
 d3.csv("data/page7_enr/page7_chiffres_cles.csv").then((data)=>{
@@ -40,16 +40,21 @@ Promise.all([
 
 function prepare_methan_data(mapInfo_methan, data){
     let prod_methan = {};
+    let nb_site_methan = {};
     for(let c of data){
         let dep = c.Departement;
-        prod_methan[dep] = d3.sum(data.filter(d=>d.Departement === dep),d=>d.Prod_moyenne_GWh);
+        methan_dep = data.filter(d=>d.Departement === dep);
+        prod_methan[dep] = d3.sum(methan_dep, d=>d.Prod_moyenne_GWh);
+        nb_site_methan[dep] = methan_dep.length;
     };
 
     mapInfo_methan.features = mapInfo_methan.features.map(d => {
         let dep = d.properties.code_departement;
         let prod = prod_methan[dep];
+        let nb_site = nb_site_methan[dep];
 
         d.properties.production = Math.round(prod);
+        d.properties.nb_site = nb_site;
         return d;
     });
 }
@@ -62,7 +67,7 @@ function get_history_methan(data){
         history_methan.push({
             year: y,
             value: d3.sum(data.filter(function(d){return d.Annee <= y;}),
-                d=>d.Prod_moyenne_GWh) 
+                d=>d.Prod_moyenne_GWh)
         })
     }
     return history_methan;
@@ -82,13 +87,63 @@ function methanLineChart(data){
     methan.draw();
 }
 
+
+function update_sites_methan(){
+    let maxnb_methan = d3.max(mapInfo_methan.features,
+        d => d.properties.nb_site);
+    
+    let midnb_methan = d3.median(mapInfo_methan.features,
+        d => d.properties.nb_site);
+
+    let cScale_site = d3.scaleLinear()
+        .domain([0, midnb_methan, maxnb_methan])
+        .range(["#FFD29B","#FFB55F", "#FF8900"]);
+
+    body_enr_methan.selectAll("path")
+        .data(mapInfo_methan.features)
+        .attr("fill",d => d.properties.nb_site ?
+            cScale_site(d.properties.nb_site): "#E0E0E0")
+        .on("mouseover", (d)=>{
+            showMethanTooltip(d.properties.nb_site, d.properties.code_departement, 
+                d.properties.production, [d3.event.pageX + 30, d3.event.pageY - 30]);
+        })
+        .on("mouseleave", d=>{
+            d3.select("#tooltip_methan").style("display","none")
+        });
+}
+
+
+function update_prod_methan(){
+    let maxProd_methan = d3.max(mapInfo_methan.features,
+        d => d.properties.production);
+    
+    let midProd_methan = d3.median(mapInfo_methan.features,
+        d => d.properties.production);
+
+    let cScale = d3.scaleLinear()
+        .domain([0, midProd_methan, maxProd_methan])
+        .range(["#FFD29B","#FFB55F", "#FF8900"]);
+
+    body_enr_methan.selectAll("path")
+        .data(mapInfo_methan.features)
+        .attr("fill",d => d.properties.production ?
+            cScale(d.properties.production): "#E0E0E0")
+        .on("mouseover", (d)=>{
+            showMethanTooltip(d.properties.nb_site, d.properties.code_departement, 
+                d.properties.production, [d3.event.pageX + 30, d3.event.pageY - 30]);
+        })
+        .on("mouseleave", d=>{
+            d3.select("#tooltip_methan").style("display","none")
+        });
+}
+
+
 function drawProdMap_methan(data, mapInfo_methan){
     let maxProd_methan = d3.max(mapInfo_methan.features,
         d => d.properties.production);
     
     let midProd_methan = d3.median(mapInfo_methan.features,
         d => d.properties.production);
-    console.log(maxProd_methan, midProd_methan);
 
     let cScale = d3.scaleLinear()
         .domain([0, midProd_methan, maxProd_methan])
@@ -109,15 +164,15 @@ function drawProdMap_methan(data, mapInfo_methan){
         .attr("fill",d => d.properties.production ?
             cScale(d.properties.production): "#E0E0E0")
         .on("mouseover", (d)=>{
-            showMethanTooltip(d.properties.code_departement, d.properties.production,
-                [d3.event.pageX + 30, d3.event.pageY - 30]);
+            showMethanTooltip(d.properties.nb_site, d.properties.code_departement, 
+                d.properties.production, [d3.event.pageX + 30, d3.event.pageY - 30]);
         })
         .on("mouseleave", d=>{
             d3.select("#tooltip_methan").style("display","none")
         });
 }
 
-function showMethanTooltip(nom, prod, coords){
+function showMethanTooltip(nb, nom, prod, coords){
     let x = coords[0];
     let y = coords[1];
 
@@ -126,6 +181,6 @@ function showMethanTooltip(nom, prod, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
-        + "<b>Production de Méthanisation: </b>" + prod*1000 + "MWh<br>");
-        
+        + "<b>Production de Méthanisation: </b>" + prod*1000 + "MWh<br>"
+        + "<b>Nombre de site: </b>" + nb + "<br>");
 }

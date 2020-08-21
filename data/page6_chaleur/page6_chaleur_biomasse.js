@@ -1,7 +1,7 @@
 
 let body_chaleur_biomasse = d3.select("#body_chaleur_biomasse");
 
-
+var mapInfo_bio = undefined;
 Promise.all([
     d3.csv("data/page6_chaleur/chaleur_biomasse.csv"),
     d3.json("data/page6_chaleur/departements-ile-de-france.geojson")
@@ -44,28 +44,79 @@ function bioLineChart(data){
 
 function prepare_bio_data(mapInfo_bio, data){
     let prod_biomasse = {};
+    let bio_sites = {};
     for(let c of data){
         let dep = c.Departement;
-        prod_biomasse[dep] = d3.sum(data.filter(d=>d.Departement === dep),d=>d.Production_estim_MWh);
+        let bio_dep = data.filter(d=>d.Departement === dep);
+        prod_biomasse[dep] = d3.sum(bio_dep,d=>d.Production_estim_MWh);
+        bio_sites[dep] = bio_dep.length;
     };
-
     mapInfo_bio.features = mapInfo_bio.features.map(d => {
         let dep = d.properties.code_departement;
         let prod = prod_biomasse[dep];
+        let nb_bio = bio_sites[dep];
 
         d.properties.production = Math.round(prod);
+        d.properties.nb_bio = nb_bio;
         return d;
     });
 }
 
-function drawProdMap_bio(data, mapInfo_bio){
+function update_sites_bio(){
+    let maxnb_bio = d3.max(mapInfo_bio.features,
+        d => d.properties.nb_bio);
     
+    let midnb_bio = d3.median(mapInfo_bio.features,
+        d => d.properties.nb_bio);
+
+    let cScale = d3.scaleLinear()
+        .domain([0, midnb_bio, maxnb_bio])
+        .range(["#FFD29B","#FFB55F", "#FF8900"]);
+
+    body_chaleur_biomasse.selectAll("path")
+        .data(mapInfo_bio.features)
+        .attr("fill",d => d.properties.nb_bio ?
+            cScale(d.properties.nb_bio): "#E0E0E0")
+        .on("mouseover", (d)=>{
+            showBioTooltip(d.properties.nb_bio, d.properties.code_departement, d.properties.production,
+                [d3.event.pageX + 30, d3.event.pageY - 30]);
+        })
+        .on("mouseleave", d=>{
+            d3.select("#tooltip_biomasse").style("display","none")
+        });
+}
+
+function update_prod_bio(){
     let maxProd_bio = d3.max(mapInfo_bio.features,
         d => d.properties.production);
     
     let midProd_bio = d3.median(mapInfo_bio.features,
         d => d.properties.production);
-    console.log(maxProd_bio, midProd_bio);
+
+    let cScale = d3.scaleLinear()
+        .domain([0, midProd_bio, maxProd_bio])
+        .range(["#FFD29B","#FFB55F", "#FF8900"]);
+
+    body_chaleur_biomasse.selectAll("path")
+        .data(mapInfo_bio.features)
+        .attr("fill",d => d.properties.production ?
+            cScale(d.properties.production): "#E0E0E0")
+        .on("mouseover", (d)=>{
+            showBioTooltip(d.properties.nb_bio, d.properties.code_departement, d.properties.production,
+                [d3.event.pageX + 30, d3.event.pageY - 30]);
+        })
+        .on("mouseleave", d=>{
+            d3.select("#tooltip_biomasse").style("display","none")
+        });
+}
+
+
+function drawProdMap_bio(data, mapInfo_bio){
+    let maxProd_bio = d3.max(mapInfo_bio.features,
+        d => d.properties.production);
+    
+    let midProd_bio = d3.median(mapInfo_bio.features,
+        d => d.properties.production);
 
     let cScale = d3.scaleLinear()
         .domain([0, midProd_bio, maxProd_bio])
@@ -86,7 +137,7 @@ function drawProdMap_bio(data, mapInfo_bio){
         .attr("fill",d => d.properties.production ?
             cScale(d.properties.production): "#E0E0E0")
         .on("mouseover", (d)=>{
-            showBioTooltip(d.properties.code_departement, d.properties.production,
+            showBioTooltip(d.properties.nb_bio, d.properties.code_departement, d.properties.production,
                 [d3.event.pageX + 30, d3.event.pageY - 30]);
         })
         .on("mouseleave", d=>{
@@ -94,7 +145,7 @@ function drawProdMap_bio(data, mapInfo_bio){
         });
 }
 
-function showBioTooltip(nom, prod, coords){
+function showBioTooltip(nb_bio, nom, prod, coords){
     let x = coords[0];
     let y = coords[1];
 
@@ -103,6 +154,6 @@ function showBioTooltip(nom, prod, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
-            + "<b>Production de Biomasse : </b>" + prod + "MWh<br>")
-        
+            + "<b>Production de Biomasse : </b>" + prod + "MWh<br>"
+            + "<b>Nombre de site: </b>" + nb_bio + "<br>");
 }

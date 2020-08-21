@@ -12,13 +12,13 @@ var selectedEPCI = undefined;
 
 Promise.all([
     d3.csv("data/page7_enr/rose_production_epci.csv"),
-    d3.json(geojson_url)
+    d3.json("data/page7_enr/EPCI-ile-de-france.geojson")
 ]).then((datasources)=>{
     mapInfo = datasources[1];
     data_prod = datasources[0];
     let prod_history = get_prod_history(data_prod);
     drawProdLine(prod_history);
-    data_prod = annee_filter(data_prod);
+    data_prod = annee_filter_prod(data_prod);
     prod_par_sec = get_ProdInfo(data_prod);
     drawPieProd(prod_par_sec);
     prepare_prod_data(mapInfo, data_prod);
@@ -28,7 +28,6 @@ Promise.all([
 
 
 function get_prod_history(data){
-    console.log(data);
     data = data.filter(function(d){return d.secteur !== "coge";});
     let years = data.map(function(d){return d.annee;});
     years = [...new Set(years)]
@@ -44,14 +43,13 @@ function get_prod_history(data){
 }
 
 function drawProdLine(data){
-    console.log(data);
     var svg = d3.select("#linechart_prod")
     var myChart = new dimple.chart(svg, data);
     myChart.setBounds(60, 10, 350, 140);
     var x = myChart.addCategoryAxis("x", "year");
     x.addOrderRule("year");
     var y = myChart.addMeasureAxis("y", "value");
-    y.title = "Production d'électricité renouvelable (KWh)";
+    y.title = "Production (KWh)";
     myChart.defaultColors = [
         new dimple.color("#09A785", "#FF483A", 1),
     ];
@@ -60,7 +58,7 @@ function drawProdLine(data){
     myChart.draw();
 }
 
-function annee_filter(data){
+function annee_filter_prod(data){
     return data.filter(function(d){return d.annee === annee_p;});
 }
 
@@ -120,7 +118,6 @@ function drawProdMap(data, mapInfo, sec){
     
     let midProd = d3.median(mapInfo.features,
         d => d.properties[sec]);
-    console.log(maxProd, midProd);
 
     let cScale = d3.scaleLinear()
         .domain([0, 1000000, 2000000, 4000000, 10000000, 200000000])
@@ -179,7 +176,6 @@ function showPordTooltip_pie(sec, prod, coords){
 }
 
 function drawPieProd(data){
-    console.log(data);
     let body = d3.select("#piechart_prod");
     let bodyHeight = 200;
     let bodyWidth = 220;

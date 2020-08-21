@@ -76,7 +76,6 @@ svg.append("text")
   .style("border-radius", "5px")
   .style("padding", "5px");
 
-  console.log(tooltip);
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
     var subgroupName = d3.select(this.parentNode).datum().key;
