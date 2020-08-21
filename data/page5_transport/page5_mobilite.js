@@ -31,7 +31,7 @@ d3.csv("data/page5_transport/mobilite_immatriculation.csv").then((data)=>{
     y.title = "Pourcentage";
     x.title = "Date d'immatriculation";
     myChart.addSeries("CRIT_AIR", dimple.plot.bar);
-    myChart.addLegend(100, 10, 180, 20, "right");
+    myChart.addLegend(100, 10, 250, 20, "right");
     myChart.draw();
 });
 
