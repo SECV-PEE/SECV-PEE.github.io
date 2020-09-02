@@ -1,4 +1,4 @@
 id,chiffre_cles,mots_cles,description,description_sup,source
 chiffre_1,"71,6%",d’énergie consommée par les bâtiments construits avant 1980,part relative au secteur du bâtiment,,"ADEME, Recensement de DPE"
 chiffre_2,"60,7%","des logements consomment plus de 230kwh/m2/an (classes E, F, G)",dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,,Données de DPE (Opendata de l'ADEME)
-chiffre_3,48663 Gwhc,volume de certificats d’économie d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,,DRIEE fichier de CEE
+chiffre_3,48663 Gwhc,volume de certificats d’économies d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,,DRIEE fichier de CEE
