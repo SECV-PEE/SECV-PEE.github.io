@@ -1,37 +1,36 @@
 id,chiffre_cles,mot_cle,description,description_sup,source,lien
-consommation_1,92%,,Énergie consommée importée ,"Seulement 8% de l'énergie consommée est produite localement.
+consommation_1,92%,,énergie consommée importée ,"seulement 8% de l'énergie consommée est produite localement.
 Source: SDES (2017)",ROSE,
-consommation_2,45%,,Consommations liées aux besoins en chaleur des bâtiments,"eau chaude sanitaire, chauffage des bâtiments. Source: ROSE",DRIEE Feuille de route,
-consommation_3,35%,de gaz fossile,30% d'électricité, 28% de produits pétroliers,Source: ROSE,Plaquette du ROSE
-emission_1,+56%,,par rapport à l'objectif (2017).,3135 kgeq CO2 ont été émis pour un objectif de 2000 kgeqCO2 pour respecter l'objectif 2°C,AIRPARIF,
-emission_2,42 MteqCO2,,émis en île-de-France en 2017 (Scopes 1 et 2).,1 teqCO2 = 1 aller retour Paris New-York,AIRPARIF,
+consommation_2,45%,,consommations liées aux besoins en chaleur des bâtiments,"eau chaude sanitaire, chauffage des bâtiments. Source: ROSE",DRIEE Feuille de route,
+consommation_3,35%,,part du gaz dans l’énergie consommée,"30 % d’électricité, 28% de produits pétroliers",Source: ROSE,Plaquette du ROSE
+emission_1,42 MteqCO2,,émis en Île-de-France en 2017 (Scopes 1 et 2),1 teqCO2 = 1 aller retour Paris New-York,AIRPARIF,
+emission_2,-22%,,d’émissions de GES en 2017 par rapport à 2005,objectif SRCAE : -28 % en 2020 par rapport à 2005,AIRPARIF,
 emission_3,54%,,"générés par le secteur du bâtiment, 30% produits par les transports routiers (2017).",87.5% à Métropole du Paris,AIRPARIF,
 production_1,"6,8%",,des consommations énergétiques couvertes par des ENR&R produites localement,contre 18 % au niveau national,Plaquette du ROSE,
 production_2,1ère,région,"pour les livraisons annuelles
 de chaleur par des réseaux
 ",avec 50 % des livraisons nationales,Plaquette du ROSE,
-production_3,"92,00 %",,part de la chaleur dans la production locale d’ENR&R ,"Reste de la production : 7,4 % d’électricité, 4,6 % de gaz",Plaquette du ROSE & DRIEE TDB en chaleur,
-precarite_1,"863500
-",ménages,"sous le critère de précarité énergétique en île-de-France
-",452 600 ménages « précaires » et 410 900 ménages « vulnérables ».,Insee Dossier Île-de-France,
+production_3,92%,,part de la chaleur dans la production locale d’ENR&R ,"Reste de la production : 7,4 % d’électricité, 4,6 % de gaz",Plaquette du ROSE & DRIEE TDB en chaleur,
+precarite_1,863 500,ménages,"sous le critère de précarité énergétique en Île-de-France
+",452 600 ménages « précaires » et 410 900 ménages « vulnérables »,Insee Dossier Île-de-France,
 precarite_2,"2/3
 ","des ménages
 ","vulnérables sont sous le seuil de pauvreté
 ","358 000 ménages sont concernés,
-soit 7,5 % des ménages franciliens.","INSEE Analyses (DRIEA, DRIHL)",
+soit 7,5 % des ménages franciliens","INSEE Analyses (DRIEA, DRIHL)",
 precarite_3,"1270€
-",,"Dépense annuelle moyenne de chauffage en île-de-France
-",Inférieur de 200€ à la moyenne nationale.,"INSEE Analyses (DRIEA, DRIHL)",
-bati_1,"71,6%",,d’énergie consommée par les bâtiments construits avant 1980,"Part du secteur du bâtiment. Source: ADEME, Recensement de DPE ","ADEME, Recensement de DPE",
-bati_2,"60,7%",,"des logements consomment plus de 230kwh/m2/an (classes E, F, G)",Dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,Données de DPE (Opendata de l'ADEME),
-bati_3,48663,Gwh cumac,volume de certificats d’économie d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,DRIEE fichier de CEE,
-transport_1,43 millions ,De déplacements,effectués chaque jour en île-de-France,"3,8 par habitant, 18 km en moyenne, près de 70% en dehors de Paris","TDB du observatoire de mobilité, Enquêt globale transport http://www.omnil.fr/IMG/pdf/presentation_egt_v_publique_vf.pdf
+",,"dépense annuelle moyenne de chauffage en Île-de-France
+",inférieur de 200€ à la moyenne nationale,"INSEE Analyses (DRIEA, DRIHL)",
+bati_1,"71,6%",,d’énergie consommée par les bâtiments construits avant 1980,"part du secteur du bâtiment. Source: ADEME, Recensement de DPE ","ADEME, Recensement de DPE",
+bati_2,"60,7%",,"des logements consomment plus de 230kwh/m2/an (classes E, F, G)",dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,Données de DPE (Opendata de l'ADEME),
+bati_3,48 663,Gwh cumac,volume de certificats d’économie d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,DRIEE fichier de CEE,
+transport_1,43 millions ,de déplacements,effectués chaque jour en Île-de-France,"3,8 par habitant, 18 km en moyenne, près de 70% en dehors de Paris","TDB du observatoire de mobilité, Enquêt globale transport http://www.omnil.fr/IMG/pdf/presentation_egt_v_publique_vf.pdf
 ",
-transport_2,+9%,,d’usage de modes actifs en Île-de-France en 2018 par rapport au 2010,+14% d’usage de transports collectifs par rapport au 2010.,TDB du observatoire de mobilité,
+transport_2,+9%,,d’usage de modes actifs en Île-de-France en 2018 par rapport au 2010,+14% d’usage de transports collectifs par rapport au 2010,TDB du observatoire de mobilité,
 transport_3,-12%,,d'énergie consommée par le secteur des transports en 2017 par rapport à 2005,"dont -2,7% entre 2015 et 2017.",Plaquette du ROSE,
-chaleur_1,52%,,part d’ENR&R dans les réseaux de chaleur,"sources : géothermie, chaleur fatale, biomasse",DRIEE Feuille de route,
+chaleur_1,52%,,part d’ENR&R dans les réseaux de chaleur,"géothermie, chaleur fatale, biomasse",DRIEE Feuille de route,
 chaleur_2,110,réseaux,de chaleur et de froid en 2017,15 % des réseaux français,Plaquette ROSE,
-chaleur_3,"1,1 million",d’équivalent-logements,alimentés en chaleur par les réseaux franciliens,19 % des logements de la région,Plaquette du ROSE,
+chaleur_3,"1,1 millions",d’équivalent-logements,alimentés en chaleur par les réseaux franciliens,19 % des logements de la région,Plaquette du ROSE,
 autre_enr_1,888 GWh,,capacité de production des sites de méthanisation en 2017,22 % de l’objectif fixé par le SCRAE pour 2030,DRIEE,
 autre_enr_2,76 GWh,,production d’électricité photovoltaïque en 2017,"3,2 % de l’objectif fixé par le SCRAE pour 2030",Plaquette du ROSE,
 autre_enr_3,92 GWh,,production d’électricité éolienne en 2017,"3,4 % de l’objectif fixé par le SCRAE pour 2030",Plaquette du ROSE,
