@@ -11,7 +11,7 @@ production_2,1ère,région,"pour les livraisons annuelles
 de chaleur par des réseaux
 ",avec 50 % des livraisons nationales,Plaquette du ROSE,
 production_3,92%,,part de la chaleur dans la production locale d’ENR&R ,"reste de la production : 7,4 % d’électricité, 4,6 % de gaz",Plaquette du ROSE & DRIEE TDB en chaleur,
-precarite_1,863 500,ménages,"sous le critère de précarité énergétique en Île-de-France
+precarite_1,863500,ménages,"sous le critère de précarité énergétique en Île-de-France
 ",452 600 ménages « précaires » et 410 900 ménages « vulnérables »,Insee Dossier Île-de-France,
 precarite_2,"2/3
 ","des ménages
@@ -23,10 +23,10 @@ precarite_3,"1270€
 ",inférieur de 200€ à la moyenne nationale,"INSEE Analyses (DRIEA, DRIHL)",
 bati_1,"71,6%",,d’énergie consommée par les bâtiments construits avant 1980,"part relative au secteur du bâtiment. Source: ADEME, Recensement de DPE ","ADEME, Recensement de DPE",
 bati_2,"60,7%",,"des logements consomment plus de 230kwh/m2/an (classes E, F, G)",dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,Données de DPE (Opendata de l'ADEME),
-bati_3,48 663,Gwh cumac,volume de certificats d’économie d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,DRIEE fichier de CEE,
+bati_3,48663,Gwh cumac,volume de certificats d’économies d’énergie (CEE) délivré en 2017,dont 55% représentés par les CEE précarité,DRIEE fichier de CEE,
 transport_1,43 millions ,de déplacements,effectués chaque jour en Île-de-France,"3,8 par habitant, 18 km en moyenne, près de 70% en dehors de Paris","TDB du observatoire de mobilité, Enquêt globale transport http://www.omnil.fr/IMG/pdf/presentation_egt_v_publique_vf.pdf
 ",
-transport_2,+9%,,d’usage de modes actifs en Île-de-France en 2018 par rapport au 2010,+14% d’usage de transports collectifs en 2018 par rapport au 2010,TDB du observatoire de mobilité,
+transport_2,+9%,,d’usage de modes actifs en Île-de-France en 2018 par rapport à 2010,+14% d’usage de transports collectifs en 2018 par rapport à 2010,TDB du observatoire de mobilité,
 transport_3,-12%,,d'énergie consommée par le secteur des transports en 2017 par rapport à 2005,"dont -2,7% entre 2015 et 2017",Plaquette du ROSE,
 chaleur_1,52%,,part d’ENR&R dans les réseaux de chaleur (SNCU),"chaleur fatale (28%), géothermie (11%), biomasse (9%), autres ENR&R (4%) (données SNCU)",DRIEE Feuille de route,
 chaleur_2,110,réseaux,de chaleur et de froid en 2018,15 % des réseaux français,Plaquette ROSE,
