@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Bilan énergétique de l'île-de-France</title>
+    <title>Bilan énergétique de l'Île-de-France</title>
     <link rel="stylesheet" href="TDB_DRIEE_CSS.css">
 </head>
 
@@ -12,11 +12,13 @@
     <!-- PAGE 0 - CHIFFRE CLES -->
     <!--------------------------->
     <img id="logo-pref" src="image/page0_chiffres_cles/logo_prif.png" width="185" height="150" alt="logo">
-    <h1 class="grand-titre">BILAN ENERGETIQUE DE L'ILE-DE-FRANCE</h1>
+    <h1 class="grand-titre">BILAN ÉNERGETIQUE DE L'ÎLE-DE-FRANCE</h1>
     
-    <h2 >CHIFFRE CLES</h2>
+    <h2 >CHIFFRES CLÉS</h2>
+	    <h3 >Version provisoire - septembre 2020</h3>
+
     <div class="seperateur">
-        <h2>Profil énergétique Francilien</h2>
+        <h2>Profil énergétique francilien</h2>
         <p>Passez le curseur sur les chiffres pour en savoir plus.</p>
         <div class="header">
             <div id="info-logo">
@@ -416,7 +418,7 @@
     
     
     <div class="seperateur">
-        <h1 id="page_01" class="grand-titre">BILAN DE LA CONSOMMATION ENERGETIQUE</h1>
+        <h1 id="page_01" class="grand-titre">BILAN DE LA CONSOMMATION ÉNERGETIQUE</h1>
     </div>
 
     <div class="container-chiffres">
@@ -436,18 +438,19 @@
             <p class="description" id="page1_des3">-</p>
         </div>
     </div>
-    <p class="text">(Place retenue pour la description.)</p>
+	<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+    <p class="text"> </p>
 
     <div id="container-general">
         <div>
-            <h3 class="grand-titre"> Equilibre d’énergie régionale</h3>
+            <h3 class="grand-titre"> Équilibre énergétique régional</h3>
             <a href="https://opendata.reseaux-energies.fr/explore/dataset/equilibre-regional-mensuel-prod-conso-brute/information/?disjunctive.region">Source: Open Data Réseaux Énergies</a>
         </div>
         <img src="image/page1_consommation/legend_equilibre.png" style="width: 680px; height: 51px;" alt="legend"> 
         <div id="equilibre-regional" style="width: 900px; height: 400px;"></div>
         <div>
-            <h3>Consommation énergétique par EPCI en île-de-France</h3>
-            <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=cfatale">Source: AIRPARIF, ENERGIF</a>
+            <h3>Consommation énergétique par EPCI en Île-de-France</h3>
+            <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=a">Source: AIRPARIF, ENERGIF</a>
         </div>
         
         
@@ -468,7 +471,7 @@
                 </svg>
             </div>
             <div id="container_inner_cartes" style="width: 450px;">
-                <h4>L'évolution de la consommation régionale d'énergie</h4>
+                <h4>Évolution de la consommation d'énergie francilienne</h4>
                 <svg id="container_linechart" height="210" width="400">
                     <g class="xAxis" />
                     <g class="yAxis" />
@@ -476,7 +479,7 @@
                         <path style="stroke: black" />
                     </g>
                 </svg>
-                <h4>Répartition par secteurs</h4>
+                <h4>Répartition par secteur</h4>
                 <button class="button-region" onclick="draw_pie_region()">Régionale</button>
                 <div>
                     <svg id="container_pie" height="200" width="220">
@@ -498,7 +501,7 @@
         <!------------------------------>
 
         <div class="seperateur">
-            <h1 id="page_02" class="grand-titre">EMISSION DE GAZ A EFFET DE SERRE SUR L'ILE-DE-FRANCE</h1>
+            <h1 id="page_02" class="grand-titre">ÉMISSIONS DE GAZ À EFFET DE SERRE</h1>
         </div>
 
         <div class="container-chiffres">
@@ -518,11 +521,12 @@
                 <p class="description" id="page2_des3">-</p>
             </div>
         </div>
-        <p class="text">(Place retenue pour la description.)</p>
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+        <p class="text">  </p>
         <div id="emission_container_generale" style="width: 900px; height: 700px;" >
             <div>
-                <h3>Emission des gaz à effet de serre (GES) par EPCI en île-de-France</h3>
-                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=cfatale">Source: AIRPARIF, ENERGIF</a>
+                <h3>Émissions de gaz à effet de serre (GES) par EPCI en Île-de-France</h3>
+                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=a">Source: AIRPARIF, ENERGIF</a>
             </div>
             
             <div class="carte" style="width: 450px; height: 600px;">
@@ -542,7 +546,7 @@
             </div>
             
             <div id="emission_cartes" style="width: 450px;">
-                <h4>L'évolution de la consommation régionale d'énergie</h4>
+                <h4>Évolution des émissions de GES franciliennes</h4>
                 <svg id="container_linechart_emiss" height="210" width="400">
                     <g class="xAxis" />
                     <g class="yAxis" />
@@ -550,7 +554,7 @@
                         <path style="stroke: black" />
                     </g>
                 </svg>
-                <h4>Répartition par secteurs</h4>
+                <h4>Répartition par secteur</h4>
                 <button class="button-region" onclick="draw_pie_emiss_region()">Régionale</button>
                 <div>
                     <svg id="container_pie_emiss" height="220" width="240">
@@ -566,7 +570,7 @@
         <!-- PAGE 3 - PRECARITE ENERGETIQUE -->
         <!------------------------------------>
         <div class="seperateur">
-            <h1 id="page_03" class="grand-titre">PRECARITE ENERGETIQUE</h1>
+            <h1 id="page_03" class="grand-titre">PRÉCARITÉ ÉNERGÉTIQUE</h1>
             <a href="https://www.insee.fr/fr/statistiques/3678895">Source: INSEE ANALYSES ILE-DE-FRANCE</a>
         </div>
         <div class="container-chiffres">
@@ -586,12 +590,13 @@
                 <p class="description" id="page3_des3">-</p>
             </div>
         </div>
-        <p class="text">(Place retenue pour la description.)</p>
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+        <p class="text"> </p>
         <div>
             <img class="img-precarite" src="image/page3_precarite/classe_dpe_IDF.png" style="width: 380px; height: 400px;" alt="classe_dpe_IDF" >
             <img class="img-precarite" src="image/page3_precarite/page3_saviez-vous.png" style="width: 380px; height: 360px;" alt="saviez-vous">
         </div>
-        <h3>Nombre et part de ménages (en %) vulnérables dans les EPCI d'Île-de-France</h3>
+        <h3>Nombre et part de ménages vulnérables dans les EPCI d'Île-de-France</h3>
         <img class="img-precarite" src="image/page3_precarite/precarite_idf.png" alt="precarite_idf" style="width: 800px; height: 520px;">
         
         
@@ -600,7 +605,7 @@
         <!-- PAGE 4 - RENOVATION ENERGETIQUE DU BATIMENT -->
         <!------------------------------------------------->
         <div class="seperateur">
-            <h1 id="page_04" class="grand-titre">RENOVATION ENERGETIQUE DU BATIMENT</h1>
+            <h1 id="page_04" class="grand-titre">RÉNOVATION ÉNERGÉTIQUE DU BÂTIMENT</h1>
         </div>
         <div class="container-chiffres">
             <div class="chiffre-cles">
@@ -619,8 +624,9 @@
                 <p class="description" id="page4_des3">-</p>
             </div>
         </div>
-        <p class="text">(Place retenue pour la description.)</p>
-        <h4>Certificat d'Economies d'Energie en île-de-France</h4>
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+        <p class="text"> </p>
+        <h4>Certificats d'économies d'énergie (CEE) en Île-de-France</h4>
         <a href="">Source: DRIEE</a>
         <div id="CEE-stackchart"></div>
 
@@ -632,18 +638,19 @@
         </div>
 
         <div>
-            <h4>L'analyse de DPE en île-de-France </h4>
+            <h4>Analyse des DPE en Île-de-France </h4>
             <a href="https://data.ademe.fr/datasets/dpe-france">Source: Opendata de l'ADEME</a>
         </div>
         <svg id="sankey_chart" style="width: 880px; height: 380px;"></svg>
-        <p class="text">(Place retenue pour la description du Sankey map)</p>
+		<!-----Ci-dessous place retenue pour la description du Sankey map, à insérer entre > et < .------>
+        <p class="text"> </p>
         
 
         <!---------------------------------------->
         <!-- PAGE 5 - MOBILITE EN ILE-DE-FRANCE -->
         <!---------------------------------------->
         <div class="seperateur">
-            <h1 id="page_05" class="grand-titre">MOBILITE EN ILE-DE-FRANCE</h1>
+            <h1 id="page_05" class="grand-titre">MOBILITÉ EN ÎLE-DE-FRANCE</h1>
         </div>
         <div class="container-chiffres">
             <div class="chiffre-cles">
@@ -662,9 +669,10 @@
                 <p class="description" id="page5_des3">-</p>
             </div>
         </div>
-        <p class="text">(Place retenue pour la description.)</p>
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+        <p class="text"> </p>
         <div>
-            <h4>Répartition d'immatriculation en île-de-France par Crit'Air et par type d'énergie</h4>
+            <h4>Répartition des immatriculations en Île-de-France par Crit'Air et par type d'énergie</h4>
             <a href="">Source: DRIEE</a>
         </div>
         <div class="mobilite-container">
@@ -674,12 +682,12 @@
         
         <div class="mobilite-container">
             <div class="mobilite-carte" id="linechart_NO2">
-                <h4>L'observation de dioxyde d'azote (NO2) en île-de-France</h4>
+                <h4>Émissions de dioxyde d'azote (NO2) en Île-de-France</h4>
                 <a href="https://data-airparif-asso.opendata.arcgis.com/datasets/mes-idf-annuel-no2">Source: AIRPARIF</a>
             </div>
             <div class="mobilite-carte" id="mixchart_ges">
-                <h4>La consommation et l'émission de GES du secteur de mobilité</h4>
-                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=cfatale">Source: ENERGIF</a>
+                <h4>Consommation et émissions de GES du secteur des transports</h4>
+                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=a">Source: ENERGIF</a>
             </div>
         </div>
         
@@ -707,13 +715,14 @@
                 <p class="description" id="page6_des3">-</p>
             </div>
         </div>
-        <p class="text">(Place retenue pour la description.)</p>
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
+        <p class="text">  </p>
         <div class="chaleur-container">
             <div>
-                <h4>La production de géothermie en île-de-France</h4>
+                <h4>Production d'énergie par géothermie en Île-de-France</h4>
                 <a href="">Source: DRIEE</a>
                 <div>
-                    <button onclick="update_sites_gth()">Nombre de site</button>
+                    <button onclick="update_sites_gth()">Nombre de sites</button>
                     <button onclick="update_prod_gth()">Production</button>
                 </div>
                 <svg id="chaleur_container_1" width="450" height="375">
@@ -721,12 +730,12 @@
             </svg>
             </div>
             <div id="linechart_gth">
-                <h4>Logements raccordés aux réseaux alimentés principalement par géothermie et la production de géothermie profonde</h4>
+                <h4>Logements raccordés aux réseaux alimentés principalement par géothermie et production par la géothermie profonde</h4>
             </div>
         </div>
         <div class="chaleur-container">
             <div>
-                <h4>La production de biomasse en île-de-France</h4>
+                <h4>Production d'énergie par les installations collectives de biomasse en Île-de-France</h4>
                 <a href="">Source: DRIEE</a>
                 <div>
                     <button onclick="update_sites_bio()">Nombre de site</button>
@@ -738,7 +747,7 @@
                 </svg>
             </div>
             <div>
-                <h4>L'évolution de la production de biomasse en île-de-France</h4>
+                <h4>Évolution de la production d'énergie par les installations collectives de biomasse en Île-de-France</h4>
                 <svg id="chaleur_container_2_2" width="460" height="350"></svg>
             </div>
         </div>
@@ -748,7 +757,7 @@
         <!-- PAGE 7 - PRODUCTION DES AUTRES ENR&R -->
         <!------------------------------------------>
         <div class="seperateur">
-            <h1 id="page_07" class="grand-titre">PRODUCTION DES AUTRES ENR&R</h1>
+            <h1 id="page_07" class="grand-titre">AUTRES ENR&R</h1>
         </div>
         <div class="container-chiffres">
             <div class="chiffre-cles">
@@ -769,10 +778,10 @@
         </div>
         <div class="container-enr">
             <div style="width: 450px; height: 450px;">
-                <h4>La production de méthanisation en île-de-France</h4>
+                <h4>Production d'énergie par méthanisation en Île-de-France</h4>
                 <a href="">Source: DRIEE</a>
                 <div>
-                    <button onclick="update_sites_methan()">Nombre de site</button>
+                    <button onclick="update_sites_methan()">Nombre de sites</button>
                     <button onclick="update_prod_methan()">Production</button>
                 </div>
                 
@@ -781,7 +790,7 @@
                 </svg>
             </div>
             <div>
-                <h4>L'évolution de la production de méthanisation</h4>
+                <h4>Évolution de la production d'énergie par méthanisation</h4>
                 <svg id="enr_container_1_2" height="350" width="420"></svg>
             </div>
         </div>
@@ -789,7 +798,7 @@
         <div style="width: 900px; height: 600px; display: inline-flex; margin-top: 3em;"> 
             <div class="carte" style="width: 450px; height: 520px;">
                 <h4>Production d'électricité renouvelable en 2017</h4>
-                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=cfatale">Source: ROSE, ENERGIF</a>
+                <a href="http://sigr.iau-idf.fr/webapps/cartes/rose/?op=a">Source: ROSE, ENERGIF</a>
                 <img src="image/page7_enr/legend_prod.png" alt="legend" width="450" height="67">
                 <svg id="production_container" width="450" height="400">
                     <g id="body_prod"></g>
@@ -805,7 +814,7 @@
                     <img src="image/page7_enr/legend_prod_pie.png" width="115" height="200" alt="legend">
                 </div>
                 
-                <h4>L'évolution de la production annuelle régionale d'électricité renouvelable</h4>
+                <h4>Évolution de la production annuelle régionale d'électricité renouvelable</h4>
                 <svg id="linechart_prod" height="180" width="420">
                     <g class="xAxis" />
                     <g class="yAxis" />
@@ -824,16 +833,11 @@
                 <g id="body_enr_pv"></g>
             </svg>
             <div style="width: 450px; height: 375px;">
-                <p class="text">(Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
-                    (Place retenue pour la description.)
+		<!-----Ci-dessous place retenue pour la description, à insérer entre > et < .------>
 
+                <p class="text">
+				
+				
                 </p>
             </div>
         </div>
