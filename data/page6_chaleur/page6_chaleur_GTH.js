@@ -36,8 +36,8 @@ function draw_gth_line(){
         x.title = "Année"; 
         y1 = line_gth.addMeasureAxis("y", "NB_LOGEMENT");
         y2 = line_gth.addMeasureAxis("y", "PRODUCTION");
-        y1.title ="Nombre des logements raccordés";
-        y2.title = "Production de géothermie (MWh)";
+        y1.title ="Nombre de logements raccordés";
+        y2.title = "Production d'énergie par géothermie (MWh)";
         var ges = line_gth.addSeries(null, dimple.plot.line,[x, y2]);
         ges.lineMarkers = true;
         line_gth.defaultColors = [
@@ -164,7 +164,7 @@ function showGTHTooltip(nb_gth, nom, prod, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
-            + "<b>Production de Géothermie : </b>" + prod + "MWh<br>"
-            + "<b>Nombre de site : </b>" + nb_gth + "<br>")
+            + "<b>Production géothermique : </b>" + prod + "MWh<br>"
+            + "<b>Nombre de sites : </b>" + nb_gth + "<br>")
         
 }
