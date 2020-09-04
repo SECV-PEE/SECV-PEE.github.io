@@ -80,8 +80,8 @@ function methanLineChart(data){
     var x = methan.addCategoryAxis("x", "year");
     x.addOrderRule("year");
     var y = methan.addMeasureAxis("y", "value");
-    y.title = "Production de biomasse (MWh)";
-    x.title = "Année";
+    y.title = "Production d'énergie par méthanisation (MWh)";
+    x.title = "Année de mise en service";
     var s = methan.addSeries(null, dimple.plot.line);
     s.lineMarkers = true;
     methan.draw();
