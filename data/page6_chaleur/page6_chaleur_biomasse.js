@@ -36,7 +36,7 @@ function bioLineChart(data){
     x.addOrderRule("year");
     var y = bio.addMeasureAxis("y", "value");
     x.title = "Année";
-    y.title = "Production de biomasse (MWh)"
+    y.title = "Produc. d'énergie par les installations biomasse (MWh)"
     var s = bio.addSeries(null, dimple.plot.line);
     s.lineMarkers = true;
     bio.draw();
