@@ -45,7 +45,7 @@ function get_prod_history(data){
 function drawProdLine(data){
     var svg = d3.select("#linechart_prod")
     var myChart = new dimple.chart(svg, data);
-    myChart.setBounds(60, 10, 350, 140);
+    myChart.setBounds(60, 10, 350, 150);
     var x = myChart.addCategoryAxis("x", "year");
     x.addOrderRule("year");
 	x.title = "Année";
