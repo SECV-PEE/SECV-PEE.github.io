@@ -48,6 +48,7 @@ function drawProdLine(data){
     myChart.setBounds(60, 10, 350, 140);
     var x = myChart.addCategoryAxis("x", "year");
     x.addOrderRule("year");
+	x.title = "Année";
     var y = myChart.addMeasureAxis("y", "value");
     y.title = "Production (KWh)";
     myChart.defaultColors = [
