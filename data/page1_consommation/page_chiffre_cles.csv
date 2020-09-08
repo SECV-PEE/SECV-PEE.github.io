@@ -1,7 +1,7 @@
 id,chiffre_cles,mot_cle,description,description_sup,source,lien
 consommation_1,92%,,d’énergie importée ,"seulement 8% de l'énergie consommée est produite localement.
 Source: SDES (2017)",ROSE,
-consommation_2,45%,,consommations liées aux besoins en chaleur des bâtiments,"eau chaude sanitaire, chauffage des bâtiments. Source: ROSE",DRIEE Feuille de route,
+consommation_2,45%,,liées aux besoins en chaleur des bâtiments,"eau chaude sanitaire, chauffage des bâtiments. Source: ROSE",DRIEE Feuille de route,
 consommation_3,63 %,,d’énergie fossile,"produits pétroliers, charbon, gaz naturel. Source: ROSE",Source: ROSE,Plaquette du ROSE
 emission_1,10%,,des émissions de gaz à effet de serre  (GES) nationales,42 MteqCO2 émis en Île-de-France en 2017 (scopes 1 et 2). Source: ROSE,AIRPARIF,
 emission_2,-22%,,d’émissions de GES en 2017 par rapport à 2005,objectif SRCAE : -28 % en 2020 par rapport à 2005,AIRPARIF,
