@@ -1,25 +1,25 @@
-DATE,CRIT_AIR,NOMBRE
-2/3 roues,EL,12 730
-VP,EL,30 775
+TYPE,CRIT_AIR,NOMBRE
+2/3 roues,EL,12730
+VP,EL,30775
 PL,EL,222
-VUL,EL,8 569
-2/3 Roues,Crit'air1,70 315
-VP,Crit'air1,1 254 030
-PL,Crit'air1,2 129
-VUL,Crit'air1,8 925
-2/3 Roues,Crit'air2,191 089
-VP,Crit'air2,1 934 789
-PL,Crit'air2,28 090
-VUL,Crit'air2,374 603
-2/3 Roues,Crit'air3,74 598
-VP,Crit'air3,974 501
-PL,Crit'air3,18 698
-VUL,Crit'air3,111 161
-2/3 Roues,Crit'air4,21 740
-VP,Crit'air4,288 704
-PL,Crit'air4,8 454
-VUL,Crit'air4,39 264
+VUL,EL,8569
+2/3 Roues,Crit'air1,70315
+VP,Crit'air1,1254030
+PL,Crit'air1,2129
+VUL,Crit'air1,8925
+2/3 Roues,Crit'air2,191089
+VP,Crit'air2,1934789
+PL,Crit'air2,28090
+VUL,Crit'air2,374603
+2/3 Roues,Crit'air3,74598
+VP,Crit'air3,974501
+PL,Crit'air3,18698
+VUL,Crit'air3,111161
+2/3 Roues,Crit'air4,21740
+VP,Crit'air4,288704
+PL,Crit'air4,8454
+VUL,Crit'air4,39264
 2/3 Roues,Crit'air5,
-VP,Crit'air5,57 867
-PL,Crit'air5,7 462
-VUL,Crit'air5,10 373
+VP,Crit'air5,57867
+PL,Crit'air5,7462
+VUL,Crit'air5,10373
