@@ -26,10 +26,10 @@ d3.csv("data/page5_transport/mobilite_immatriculation.csv").then((data)=>{
         new dimple.color("#FF8900", "#FFFFFF", 1),
         new dimple.color("#39F3BB", "#FFFFFF", 1)
     ];
-    var x = myChart.addCategoryAxis("x", ["DATE"]);
+    var x = myChart.addCategoryAxis("x", ["TYPE"]);
     var y = myChart.addPctAxis("y", "NOMBRE");
     y.title = "Pourcentage";
-    x.title = "Date d'immatriculation";
+    x.title = "Type de véhicule";
     myChart.addSeries("CRIT_AIR", dimple.plot.bar);
     myChart.addLegend(100, 10, 240, 20, "right");
     myChart.draw();
