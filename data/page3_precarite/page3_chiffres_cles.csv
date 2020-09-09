@@ -1,12 +1,6 @@
 id,chiffre_cles,mots_cles,description,description_sup,source
-chiffre_1,"863 500
-","ménages sous le critère de précarité énergétique en Île-de-France
-","452 600 ménages « précaires » et 410 900 ménages « vulnérables »
-",,Insee Dossier Île-de-France
-chiffre_2,"2/3
-","des ménages vulnérables sont sous le seuil de pauvreté
- ","358 000 ménages sont concernés, soit 7,5 % des ménages franciliens
-",,"INSEE Analyses (DRIEA, DRIHL)"
+chiffre_1,"7,5%",de ménages franciliens vulnérables énergétiquement (soit 358 000),avec une facture de chauffage supérieure à 8 % de leurs revenus,,Insee Dossier Île-de-France
+chiffre_2,808 376,ménages éligibles au chèque énergie en 2019,valeur entre 48 et 277 €,,"INSEE Analyses (DRIEA, DRIHL)"
 chiffre_3,"1270€
 ","dépense annuelle moyenne de chauffage en Île-de-France
 ","inférieure de 200€ à la moyenne nationale
