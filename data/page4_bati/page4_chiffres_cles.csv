@@ -1,4 +1,4 @@
 id,chiffre_cles,mots_cles,description,description_sup,source
 chiffre_1,72%,part de ce que représentent les bâtiment construits avant 1980,"dans les consommations du secteur. Source: ADEME, Recensement de DPE ",,"ADEME, Recensement de DPE"
-chiffre_2,61%,"des logements consomment plus de 230kwh/m2/an (classes E, F, G)",dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,,Données de DPE (Opendata de l'ADEME)
+chiffre_2,63%,"des résidences principales consomment plus de 230kwh/m2/an (classes E, F, G)",dépasse d’un facteur 4 l'objectif fixé par le SRCAE pour 2050,,Données de DPE (Opendata de l'ADEME)
 chiffre_3,90%,des certificats d’économies d’énergie (CEE) délivrés en 2017 concernent le secteur du bâtiment,"soit 43.4 Twhcumac, dont 62 % de CEE précarité. Source : DGEC",,DRIEE fichier de CEE
