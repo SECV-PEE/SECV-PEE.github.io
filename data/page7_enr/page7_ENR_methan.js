@@ -182,5 +182,5 @@ function showMethanTooltip(nb, nom, prod, coords){
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
         + "<b>Production de Méthanisation: </b>" + prod*1000 + "MWh<br>"
-        + "<b>Nombre de site: </b>" + nb + "<br>");
+        + "<b>Nombre de sites: </b>" + nb + "<br>");
 }
