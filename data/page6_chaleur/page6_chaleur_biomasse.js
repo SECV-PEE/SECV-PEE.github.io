@@ -154,6 +154,6 @@ function showBioTooltip(nb_bio, nom, prod, coords){
         .style("top", (y)+"px")
         .style("left", (x)+"px")
         .html("<b>Département : </b>" + nom + "<br>"
-            + "<b>Production de Biomasse : </b>" + prod + "MWh<br>"
-            + "<b>Nombre de site: </b>" + nb_bio + "<br>");
+            + "<b>Production par biomasse : </b>" + prod + "MWh<br>"
+            + "<b>Nombre de sites: </b>" + nb_bio + "<br>");
 }
