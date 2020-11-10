@@ -1,0 +1,142 @@
+{
+    "conso": {
+        "nom": "BILAN DE LA CONSOMMATION ÉNERGETIQUE",
+        "datas": {
+            "data1": {
+                "chiffre": "92%",
+                "motClé": "d’énergie importée",
+                "texte": "seulement 8% de l'énergie consommée est produite localement"
+            },
+            "data2": {
+                "chiffre": "45%",
+                "motClé": "liées aux besoins en chaleur des bâtiments",
+                "texte": "chauffage, eau chaude sanitaire"
+            },
+            "data3": {
+                "chiffre": "63 %",
+                "motClé": "d’énergie fossile",
+                "texte": "produits pétroliers, charbon, gaz naturel"
+            }
+        }
+    },
+    "ges": {
+        "nom": "ÉMISSIONS DE GAZ À EFFET DE SERRE",
+        "datas": {
+            "data1": {
+                "chiffre": "10%",
+                "motClé": "des émissions de gaz à effet de serre nationales",
+                "texte": "42 MteqCO2 émis en Île-de-France en 2017 (scopes 1 et 2)"
+            },
+            "data2": {
+                "chiffre": "-22%",
+                "motClé": "d’émissions de GES en 2017 par rapport à 2005",
+                "texte": "objectif SRCAE : -28 % en 2020 par rapport à 2005"
+            },
+            "data3": {
+                "chiffre": "54%",
+                "motClé": "part des GES émise par le secteur du bâtiment",
+                "texte": " 30% sont émis par les transports routiers"
+            }
+        }
+    },
+    "preca": {
+        "nom": "PRÉCARITÉ ÉNERGÉTIQUE",
+        "datas": {
+            "data1": {
+                "chiffre": "7,5%",
+                "motClé": "de ménages franciliens vulnérables énergétiquement (soit 358 000)",
+                "texte": "avec une facture de chauffage supérieure à 8 % de leurs revenus"
+            },
+            "data2": {
+                "chiffre": "808376",
+                "motClé": "ménages éligibles au chèque énergie en 2019",
+                "texte": "valeur entre 48 et 277 €"
+            },
+            "data3": {
+                "chiffre": "1 270 €",
+                "motClé": "dépense annuelle moyenne de chauffage en Île-de-France",
+                "texte": "inférieure de 200€ à la moyenne nationale"
+            }
+        }
+    },
+    "bati": {
+        "nom": "RÉNOVATION ÉNERGÉTIQUE DU BÂTIMENT",
+        "datas": {
+            "data1": {
+                "chiffre": "72%",
+                "motClé": "part de ce que représentent les bâtiment construits avant 1980",
+                "texte": "dans les consommations du secteur. Source: ADEME, Recensement de DPE "
+            },
+            "data2": {
+                "chiffre": "18 %",
+                "motClé": "des résidences principales consomment plus de 331kwh/m².an (classes F, G)",
+                "texte": "soit 958 483 logements (2018). Source : CGDD/SDES"
+            },
+            "data3": {
+                "chiffre": "90%",
+                "motClé": "des certificats d’économies d’énergie (CEE) délivrés en 2017 concernent le secteur du bâtiment",
+                "texte": "soit 43.4 Twhcumac, dont 62 % de CEE précarité. Source : DGEC"
+            }
+        }
+    },
+    "mobilite": {
+        "nom": "MOBILITÉ EN ÎLE-DE-FRANCE",
+        "datas": {
+            "data1": {
+                "chiffre": "43 millions",
+                "motClé": "de déplacements effectués chaque jour en Île-de-France",
+                "texte": "3,8 par habitant, 18 km en moyenne, près de 70% en dehors de Paris  (source : EGT H2020-IDF Mobilité-OMNIL-DRIEA)"
+            },
+            "data2": {
+                "chiffre": "+9%",
+                "motClé": "d’usage de modes actifs en Île-de-France en 2018 par rapport à 2010",
+                "texte": "+14% d’usage de transports collectifs en 2018 par rapport à 2010 (source : EGT H2020-IDF Mobilité-OMNIL-DRIEA)"
+            },
+            "data3": {
+                "chiffre": "-12%",
+                "motClé": "d'énergie consommée par les transports routiers en 2017 par rapport à 2005",
+                "texte": "dont -3% par rapport à 2015"
+            }
+        }
+    },
+    "chaleur": {
+        "nom": "CHALEUR RENOUVELABLE",
+        "datas": {
+            "data1": {
+                "chiffre": "52%",
+                "motClé": "part d’ENR&R dans les réseaux de chaleur",
+                "texte": "chaleur fatale (28%), géothermie (11%), biomasse (9%), autres ENR&R (4%) (Source : SNCU)"
+            },
+            "data2": {
+                "chiffre": "110",
+                "motClé": "réseaux de chaleur et de froid en 2018",
+                "texte": "15 % des réseaux français"
+            },
+            "data3": {
+                "chiffre": "1,1 millions",
+                "motClé": "d’équivalent-logements raccordés aux réseaux de chaleur franciliens en 2018",
+                "texte": "potentiel de 2,5 millions d’équivalent-logements supplémentaires raccordables"
+            }
+        }
+    },
+    "enr": {
+        "nom": "Autres ENR&R",
+        "datas": {
+            "data1": {
+                "chiffre": "22%",
+                "motClé": "de l’objectif à 2030 fixé par le SCRAE pour la méthanisation atteint en 2019",
+                "texte": "capacité de production des sites de méthanisation en 2019 : 888 GWh"
+            },
+            "data2": {
+                "chiffre": "3,2%",
+                "motClé": "de l’objectif à 2030 fixé par le SCRAE pour l’électricité photovoltaïque atteint en 2017",
+                "texte": "production d’électricité photovoltaïque en 2017 : 76 GWh"
+            },
+            "data3": {
+                "chiffre": "3,4%",
+                "motClé": "de l’objectif à 2030 fixé par le SCRAE pour l’électricité éolienne atteint en 2017",
+                "texte": "production d’électricité éolienne en 2017 : 92 GWh"
+            }
+        }
+    }
+}
