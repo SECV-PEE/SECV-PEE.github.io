@@ -1,10 +1,9 @@
 <template>
   <div id="section-intro">
     <img id="logo-pref" :src="`${path}${img_page}/logo_prif.png`" width="185" height="150" alt="logo">
-    <div class="separateur"></div>
     <h1 class="grand-titre">BILAN ÉNERGÉTIQUE DE L'ÎLE-DE-FRANCE</h1>    
-    <h2 >CHIFFRES CLÉS</h2>
-    <h3 >Version provisoire - septembre 2020</h3>
+    <h2>CHIFFRES CLÉS</h2>
+    <h3>Version provisoire - septembre 2020</h3>
 
   <!-- SUBSECTION 1 -->
     <div class="separateur">

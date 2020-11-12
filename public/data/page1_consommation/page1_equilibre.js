@@ -4,7 +4,7 @@ width_eq = 950 - margin.left - margin.right,
 height_eq = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#app #section-conso #equilibre-regional")
+var svg = d3.select("#equilibre-regional")
   .append("svg")
   .attr("width", width_eq + margin.left + margin.right)
   .attr("height", height_eq + margin.top + margin.bottom)
