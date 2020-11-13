@@ -1,7 +1,5 @@
 <template>
   <div id="section-home">
-    <h2>Baromètre de la</h2>
-    <h1 style="grand-titre">Transition énergétique en Île-de-France</h1>
     <p>
       <router-link to="/tableau-de-bord">Accéder au tableau</router-link>
     </p>
