@@ -28,6 +28,7 @@ export default {
 </script>
 
 <style>
+@import './TDB_DRIEE_CSS.css';
 
 #app {
   position: relative;
@@ -38,9 +39,11 @@ export default {
   margin: 0;
   padding-left: 0;
   padding-right: 0;
+  font-family:'Montserrat', sans-serif;
 }
 
 *, *::before, *::after {
+  box-sizing: content-box;
 }
 
 </style>

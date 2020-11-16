@@ -1,11 +1,14 @@
 <template>
   <div id="header" class="header-menu">
     <div id="website-title" class="header-title">
+      <img id="logo_FDR" :src="`${path}logo_FDR.png`" width="185" height="150" alt="logo">
+      <div class="title">
+        <h2>Baromètre de la</h2>
+        <h1>Transition énergétique en Île-de-France</h1>
+      </div>
       <img id="logo-pref" :src="`${path}logo_prif.png`" width="185" height="150" alt="logo">
-      <h2>Baromètre de la</h2>
-      <h1>Transition énergétique en Île-de-France</h1>
     </div>
-    <b-navbar class="header" toggleable="lg" type="dark" sticky variant="info" v-b-scrollspy:nav-scroller>
+    <b-navbar class="header" toggleable="lg" type="dark" fixed="top" variant="info" v-b-scrollspy:nav-scroller>
       <b-navbar-toggle target="navbar-collapse"></b-navbar-toggle>
       <b-collapse id="navbar_collapse" is-nav>
         <b-navbar-nav>
@@ -52,12 +55,22 @@ export default {
 
 <style>
   .header-menu {
-    position: relative;
     width: 100%;
   }
 
   .header-title {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
   }
+
+  .header-title .title {
+    margin-top: 1em;
+  }
+
+  .header-menu .header {
+    justify-content: space-between;
+  }
+
 </style>

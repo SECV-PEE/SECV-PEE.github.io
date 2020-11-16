@@ -1,14 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:400,600");
 
- body{
-    width : 1000px;
+body{
+    width : 100%;
     min-width: 800px;
     height: 100%;
     min-height: 800px;
     margin: 0 auto;
     font-family:'Montserrat', sans-serif;
-    padding-left: 12em;
-    padding-right: 6em;
+    padding-left: 0em;
+    padding-right: 0em;
 }
 
 button{

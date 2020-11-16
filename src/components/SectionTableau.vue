@@ -1,5 +1,5 @@
 <template>
-  <div id="section-tableau">
+  <div id="section-tableau" class="tableau_de_bord">
     <SectionIntro :path="publicPath"></SectionIntro>
     <SectionConso :path="publicPath" :data=SectionsJSON.conso></SectionConso>
     <SectionEmiss :path="publicPath" :data=SectionsJSON.ges></SectionEmiss>
@@ -45,5 +45,10 @@ export default {
 </script>
 
 <style>
-  @import "../TDB_DRIEE_CSS.css";
+
+.tableau_de_bord {
+  padding-right: 6em;
+  padding-left: 6em;
+}
+
 </style>

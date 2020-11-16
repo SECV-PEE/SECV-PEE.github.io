@@ -11,7 +11,6 @@ Vue.config.productionTip = false
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-// import './TDB_DRIEE_CSS.css';
 
 new Vue({
   el: '#app',
