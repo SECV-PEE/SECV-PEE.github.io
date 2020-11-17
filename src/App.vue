@@ -30,8 +30,10 @@ export default {
 <style>
 @import './TDB_DRIEE_CSS.css';
 
-#app {
+.v-application {
   position: relative;
+  font-family:'Montserrat', sans-serif;
+  line-height: 1;
 }
 
 .body {
@@ -39,7 +41,6 @@ export default {
   margin: 0;
   padding-left: 0;
   padding-right: 0;
-  font-family:'Montserrat', sans-serif;
 }
 
 *, *::before, *::after {

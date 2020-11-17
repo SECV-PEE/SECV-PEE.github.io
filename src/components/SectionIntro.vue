@@ -1,5 +1,5 @@
 <template>
-  <div id="section-intro">
+  <div id="section-intro" class="section-intro">
     <!-- SUBSECTION 1 -->
     <h1 class="grand-titre">Chiffres clés</h1>
     <h2 >Profil énergétique francilien</h2>
