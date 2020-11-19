@@ -1,5 +1,6 @@
 <template>
   <div id="section-tableau" class="tableau_de_bord">
+    <SectionAccueil :path="publicPath" :data=SectionsJSON.accueil></SectionAccueil>
     <SectionIntro :path="publicPath"></SectionIntro>
     <SectionConso :path="publicPath" :data=SectionsJSON.conso></SectionConso>
     <SectionEmiss :path="publicPath" :data=SectionsJSON.ges></SectionEmiss>
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+import SectionAccueil from "@/components/SectionAccueil.vue"
 import SectionIntro from "@/components/SectionIntro.vue"
 import SectionConso from "@/components/SectionConso.vue"
 import SectionEmiss from "@/components/SectionEmiss.vue"
@@ -26,6 +28,7 @@ import SectionsJSON from '@/components/sections.json';
 export default {
   name: 'SectionTableau',
   components: {
+    SectionAccueil: SectionAccueil,
     SectionIntro: SectionIntro,
     SectionConso: SectionConso,
     SectionEmiss: SectionEmiss,
@@ -47,6 +50,8 @@ export default {
 <style>
 
 .tableau_de_bord {
+  margin: auto;
+  justify-items: center;
   padding-right: 6em;
   padding-left: 6em;
 }

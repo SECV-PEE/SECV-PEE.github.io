@@ -1,4 +1,45 @@
 {
+    "accueil": {
+        "up": {
+            "data1": {
+                "chiffre": "92%",
+                "motClé": "d'énergie importée",
+                "texte": "",
+                "description": "Avec 92 % d’énergie consommée importée, l’Île-de-France est la région française qui présente la plus forte dépendance énergétique. La production locale d’énergie renouvelable et de récupération ne couvre que 6,8 % des consommations.",
+                "img": "pylone2.png"
+            },
+            "data2": {
+                "chiffre": "63%",
+                "motClé": "d'énergie fossile",
+                "texte": "",
+                "description": "L’énergie consommée en Île-de-France est majoritairement fossile. Les principaux types d’énergie consommés sont le gaz (35 %, quasi exclusivement fossile), l’électricité (30 %) et les produits pétroliers (28 %).",
+                "img": "Petrole2.png"
+            },
+            "data3": {
+                "chiffre": "45%",
+                "motClé": "des consommations",
+                "texte": "liées au chauffage des bâtiments",
+                "description": "Les consommations énergétiques franciliennes sont majoritairement rattachées au secteur du bâtiment (63 %) et servent surtout à couvrir les besoins en chaleur des bâtiments (eau chaude et chauffage). Vient ensuite le secteur des transports, responsable de 24 % des consommations.",
+                "img": "immeubles.png" 
+            }
+        },
+        "down": {
+            "data4": {
+                "chiffre": "110",
+                "motClé": "réseaux de chaleur",
+                "texte": "",
+                "description": "L’Île-de-France est la première région française en nombre de réseaux de chaleur (15 % des réseaux français) et en livraison annuelle de chaleur par ces réseaux, avec 11,5 TWh en 2018 soit 45 % des livraisons françaises. Le taux moyen d’ENR&R de ces réseaux est de 52 %.",
+                "img": "reseaux_chaleur.png"
+            },
+            "data5": {
+                "chiffre": "1 million",
+                "motClé": "d'habitants",
+                "texte": "chauffés par la géothermie",
+                "description": "L’Île-de-France bénéficie d’un potentiel exceptionnel pour la géothermie. Avec une soixantaine d’installations de géothermie profonde en fonctionnement, elle présente la plus grande densité d’opérations au monde et représente plus de 80 % de la production géothermique nationale.",
+                "img": "geothermie.png"
+            }
+        }
+    },
     "conso": {
         "nom": "BILAN DE LA CONSOMMATION ÉNERGETIQUE",
         "datas": {
