@@ -8,6 +8,8 @@ import SectionBatiment from "@/components/SectionBatiment.vue"
 import SectionMobilite from "@/components/SectionMobilite.vue"
 import SectionChaleur from "@/components/SectionChaleur.vue"
 import SectionEnr from "@/components/SectionEnr.vue"
+import SectionContact from "@/components/SectionContact.vue"
+import SectionLiens from "@/components/SectionLiens.vue"
 import goTo from 'vuetify/es5/services/goto'
 
 Vue.use(Router)
@@ -71,5 +73,15 @@ export default new Router({
       name: 'enr',
       component: SectionEnr
     },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: SectionContact
+    },
+    {
+      path: '/liens-utiles',
+      name: 'liens',
+      component: SectionLiens
+    }
   ]
  })

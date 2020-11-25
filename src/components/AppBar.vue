@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="header-appbar" color="#e5edf5ff" style="position: sticky" fixed dense hide-on-scroll scroll-target="#scroll-bar">
+  <v-app-bar class="header-appbar" color="#e5edf5ff" style="position: sticky" fixed dense>
     <v-tabs centered>
       <v-tab class="text-center" @click="$vuetify.goTo('#section-intro', options)">Chiffres Clés</v-tab>
       <v-tab class="text-center">
@@ -32,8 +32,8 @@
           </v-list>
         </v-menu>
       </v-tab>
-      <v-tab class="text-center">Liens Utiles</v-tab>
-      <v-tab class="text-center">Nous Contacter</v-tab>
+      <v-tab class="text-center" @click="$vuetify.goTo('#section-liens', options)">Liens Utiles</v-tab>
+      <v-tab class="text-center" @click="$vuetify.goTo('#section-contact', options)">Nous Contacter</v-tab>
     </v-tabs>
     <v-sheet
       id="scroll-bar"
@@ -51,7 +51,6 @@
     align-items: center;
     justify-items: center;
     width: 100%;
-
   }
 
 </style>

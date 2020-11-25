@@ -1,8 +1,8 @@
 <template>
   <div id="website-title" class="header-title">
-    <img id="logo_FDR" :src="`${path}logo_FDR.png`" width="185" height="150" alt="logo">
+    <img class="logo-FDR" :src="`${path}logo_FDR.png`" width="150" height="150" alt="logo">
     <div class="title">
-      <h2>Baromètre de la</h2>
+      <h2 style="margin-bottom: 0.5em">Baromètre de la</h2>
       <h1>Transition énergétique en Île-de-France</h1>
     </div>
     <img id="logo-pref" :src="`${path}logo_prif.png`" width="185" height="150" alt="logo">
@@ -35,11 +35,17 @@ export default {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 2em;
+    margin-bottom: 2px;
+    margin-top: 1px;
   }
 
   .header-title .title {
-    margin-top: 1em;
+    margin-top: 0.3em;
+  }
+
+  .logo-FDR {
+    margin-left: 2em;
+    margin-right: 2em;
   }
 
 </style>

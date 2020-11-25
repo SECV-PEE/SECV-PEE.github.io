@@ -1,6 +1,6 @@
 <template>
     <div id="section-enr">
-      <div id="separateur">
+      <div class="separateur">
         <h1 id="page_02" class="grand-titre">{{data.nom}}</h1>
       </div>
       <DataContainer :path="`${path}${img_page}`" :data="data" v-bind:intro="false"></DataContainer>

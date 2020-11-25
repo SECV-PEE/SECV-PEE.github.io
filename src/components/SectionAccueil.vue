@@ -2,21 +2,16 @@
   <div id="section-accueil" class="section-accueil">
     <!-- SUBSECTION 1 -->
     <h2 class="title-accueil">Le profil énergétique de l'Île-de-France en 5 chiffres, c'est...</h2>
-    <v-item-group class="chiffres-accueil">
-      <v-row centered class="mx-auto">
-        <template v-for="block in SectionsJSON.accueil.up">
-          <DataImgBlock :key="block.name" :path="`${path}${img_page}/`" :data="block" :img="block.img"></DataImgBlock>
-          <v-spacer :key="block.name"></v-spacer>
-        </template>
-      </v-row>
-      <v-spacer></v-spacer>
-      <v-row centered class="mx-auto">
-        <template v-for="block in SectionsJSON.accueil.down">
-          <DataImgBlock :key="block.name" :path="`${path}${img_page}/`" :data="block" :img="block.img"></DataImgBlock>
-          <v-spacer :key="block.name"></v-spacer>
-        </template>
-      </v-row>
-    </v-item-group>
+    <div class="dc-accueil-up">
+      <template v-for="block in SectionsJSON.accueil.up">
+        <DataImgBlock :key="block.name" :path="`${path}${img_page}/`" :data="block" :img="block.img"></DataImgBlock>
+      </template>
+    </div>
+    <div class="dc-accueil-down">
+      <template v-for="block in SectionsJSON.accueil.down">
+        <DataImgBlock :key="block.name" :path="`${path}${img_page}/`" :data="block" :img="block.img"></DataImgBlock>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -44,22 +39,37 @@ export default {
 
 <style>
 .section-accueil {
-  margin-top: 4em;
+  margin-top: 1em;
   justify-items: center;
+}
+
+.dc-accueil-up {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.dc-accueil-down {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;;
 }
 
 .title-accueil {
   text-align: center;
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-bottom: 0.2em;
 }
 
 .chiffres-accueil {
   margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
   padding-left: 2em;
   padding-right: 2em;
   align-self: center;
-  justify-content: space-evenly;
+  vertical-align: middle;
 }
 </style>
 
