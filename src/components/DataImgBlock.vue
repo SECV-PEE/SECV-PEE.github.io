@@ -218,6 +218,17 @@ export default {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.text-circle .db-tooltiptext::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: -30px;
+    border: solid 15px transparent;
+    border-left-color: rgb(229, 237, 245);
+    z-index: 4;
+}
+
 /* .text-circle .db-tooltiptext::before {
   content: "";
   float: right;
